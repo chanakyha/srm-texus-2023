@@ -3,3 +3,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .navButton {
+    @apply text-black capitalize tracking-widest font-sniglet text-lg dark:text-white cursor-pointer;
+  }
+}
