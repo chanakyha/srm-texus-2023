@@ -40,3 +40,7 @@ animation-delay: 1.6s;
     @apply text-black capitalize tracking-widest font-sniglet text-lg dark:text-white cursor-pointer;
   }
 }
+
+::-webkit-scrollbar {
+	display: none;
+}
