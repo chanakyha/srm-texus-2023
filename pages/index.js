@@ -1,16 +1,18 @@
 import Head from "next/head";
 import Header from "../components/Header";
+import Landing from "../components/Landing";
 
 const Home = () => {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-2">
+    <div className="flex min-h-screen w-full">
       <Head>
         <title>SRM Texus</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <Header />
+      <main className="w-full bg-black">
+        {/* <Header  /> */}
+        <Landing/>
       </main>
     </div>
   );
