@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Image from "next/image";
+import Header from "../components/Header";
 
 const Home = () => {
   return (
@@ -8,6 +8,10 @@ const Home = () => {
         <title>SRM Texus</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <main>
+        <Header />
+      </main>
     </div>
   );
 };
