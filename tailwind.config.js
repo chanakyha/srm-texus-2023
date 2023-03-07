@@ -8,8 +8,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        Montserrat: ["Montserrat", "sans-serif"],
-        Sniglet: ["Sniglet", "cursive"],
+        montserrat: ["Montserrat", "sans-serif"],
+        sniglet: ["Sniglet", "cursive"],
       },
     },
   },
