@@ -2,7 +2,7 @@ export const technicalEvents = [
   {
     id: 23562356238501,
     eventName: "Mindwrap",
-    clubName: "SLUG & PLUG",
+    clubName: "Slug & Plug",
     rules: "It's a coding event, that consists of 3 challenges.",
     staffCo: ["Mrs.C.Ashwini"],
     studentCo: ["Pranav ,Spandan"],

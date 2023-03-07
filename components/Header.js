@@ -1,8 +1,10 @@
 import { Drawer } from "antd";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 
 const Header = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
+  const router = useRouter();
 
   const contents = ["events", "about texus", "schedule", "sponsors"];
 
@@ -53,7 +55,10 @@ const Header = () => {
               <p
                 key={key}
                 className="navButton"
-                onClick={() => setOpenDrawer(!openDrawer)}
+                onClick={() => {
+                  router.replace(`/${content}`);
+                  setOpenDrawer(!openDrawer);
+                }}
               >
                 {content}
               </p>
@@ -61,13 +66,22 @@ const Header = () => {
           })}
         </div>
       </Drawer>
-      <div className="flex bg-white justify-between border-b duration-1000 transition-all ease-out py-5 px-10 items-center dark:bg-black">
-        <h1 className="navButton tracking-[1rem] text-xl">Texus</h1>
+      <div className="flex bg-white justify-between duration-1000 transition-all ease-out py-5 px-10 items-center dark:bg-black">
+        <h1
+          onClick={() => router.replace("/")}
+          className="navButton tracking-[1rem] text-xl"
+        >
+          Texus
+        </h1>
 
         <div className="space-x-10 items-center hidden lg:inline-flex">
           {contents.map((content, key) => {
             return (
-              <p key={key} className="navButton">
+              <p
+                onClick={() => router.replace(`/${content}`)}
+                key={key}
+                className="navButton"
+              >
                 {content}
               </p>
             );
