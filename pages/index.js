@@ -2,6 +2,7 @@ import Head from "next/head";
 import Landing from "../components/Landing";
 import Tagline from "../components/Tagline";
 import EventDetails from "../components/EventDetails";
+import Carousel from "../components/Carousel";
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
       </Head>
       <main className="w-full bg-black">
         <Landing/>
+        <Carousel/>
         <Tagline/>
         <EventDetails/>
       </main>
