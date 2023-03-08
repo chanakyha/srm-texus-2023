@@ -1,14 +1,16 @@
 import Head from "next/head";
+import Landing from "../components/Landing";
 
 const Home = () => {
   return (
-    <div className="min-h-screen w-full">
+    <div className="flex min-h-screen w-full">
       <Head>
         <title>SRM Texus</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main></main>
+      <main className="w-full bg-black">
+        <Landing/>
+      </main>
     </div>
   );
 };
