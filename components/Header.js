@@ -6,7 +6,7 @@ const Header = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
   const router = useRouter();
 
-  const contents = ["events", "about texus", "schedule", "sponsors"];
+  const contents = ["EVENTS", "ABOUT", "SCHEDULE", "SPONSORS", "CONTACT"];
 
   return (
     <>
@@ -28,9 +28,9 @@ const Header = () => {
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            stroke-width="1.5"
+            strokeWidth="1.5"
             stroke="currentColor"
-            class="w-6 h-6"
+            className="w-6 h-6"
           >
             <path
               stroke-linecap="round"
@@ -71,7 +71,7 @@ const Header = () => {
           onClick={() => router.replace("/")}
           className="navButton tracking-[1rem] text-xl"
         >
-          Texus
+          TEXUS
         </h1>
 
         <div className="space-x-10 items-center hidden lg:inline-flex">

@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React from "react";
 
 const Landing = () => {
 
@@ -22,4 +21,4 @@ const Landing = () => {
     )
 }
 
-export default Landing
+export default Landing;
