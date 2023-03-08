@@ -22,6 +22,7 @@ animation-delay: 0.4s;
 .textSpan:nth-child(3) {
 animation-delay: 0.8s;
 color: #000;
+visibility: hidden;
 }
 .textSpan:nth-child(4) {
 animation-delay: 1.2s;
@@ -43,4 +44,9 @@ animation-delay: 1.6s;
 
 ::-webkit-scrollbar {
 	display: none;
+}
+
+body {
+  background-color: #000;
+  color: #fff;
 }
