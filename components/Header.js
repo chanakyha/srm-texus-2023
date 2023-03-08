@@ -6,7 +6,7 @@ const Header = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
   const router = useRouter();
 
-  const contents = ["events", "about texus", "schedule", "sponsors"];
+  const contents = ["EVENTS", "ABOUT", "SCHEDULE", "SPONSORS", "CONTACT"];
 
   return (
     <>
@@ -71,7 +71,7 @@ const Header = () => {
           onClick={() => router.replace("/")}
           className="navButton tracking-[1rem] text-xl"
         >
-          Texus
+          TEXUS
         </h1>
 
         <div className="space-x-10 items-center hidden lg:inline-flex">
