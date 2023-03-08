@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Header from "../components/Header";
 
 const Home = () => {
   return (
@@ -10,10 +9,11 @@ const Home = () => {
       </Head>
 
       <main>
-        <Header />
+      
       </main>
     </div>
   );
 };
 
 export default Home;
+
