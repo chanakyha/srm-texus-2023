@@ -1,9 +1,10 @@
 import Head from "next/head";
 import Header from "../components/Header";
+import Carousel from "../components/Carousel";
 
 const Home = () => {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-2">
+    <div className="">
       <Head>
         <title>SRM Texus</title>
         <link rel="icon" href="/favicon.ico" />
@@ -11,6 +12,7 @@ const Home = () => {
 
       <main>
         <Header />
+        <Carousel />
       </main>
     </div>
   );
