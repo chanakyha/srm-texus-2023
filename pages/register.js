@@ -5,6 +5,7 @@ import {
   doc,
   collection,
   getCountFromServer,
+  getDoc,
 } from "firebase/firestore";
 import { db } from "../backend/firebase";
 import { useRouter } from "next/router";
@@ -23,8 +24,17 @@ const Register = () => {
   };
 
   useEffect(() => {
+    (async () => {
+      const docSnap = await getDoc(doc(db, "students", `${user.uid}`));
+      docSnap?.data()?.texusId ? router.replace("/") : null;
+    })();
+
     if (!user) router.replace("/");
   }, [user]);
+
+  useEffect(() => {
+    getTotalDocs();
+  }, []);
 
   const sampleData = {
     name: "Chanakyha",
