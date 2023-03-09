@@ -70,7 +70,7 @@ const Header = () => {
                 key={key}
                 className="navButton capitalize"
                 onClick={() => {
-                  router.replace(`/${content}`);
+                  router.push(`/${content}`);
                   setOpenDrawer(!openDrawer);
                 }}
               >
@@ -82,7 +82,7 @@ const Header = () => {
       </Drawer>
       <div className="flex bg-white justify-between duration-1000 transition-all ease-out py-5 px-10 items-center dark:bg-black">
         <h1
-          onClick={() => router.replace("/")}
+          onClick={() => router.push("/")}
           className="navButton tracking-[1rem] text-xl"
         >
           TEXUS
@@ -92,7 +92,7 @@ const Header = () => {
           {contents.map((content, key) => {
             return (
               <p
-                onClick={() => router.replace(`/${content}`)}
+                onClick={() => router.push(`/${content}`)}
                 key={key}
                 className="navButton"
               >

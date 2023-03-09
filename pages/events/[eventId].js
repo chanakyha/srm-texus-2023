@@ -51,7 +51,10 @@ const EventDescription = () => {
       />
 
       <div className="lg:p-20 p-5 pt-0 lg:pt-0 text-lg font-semibold">
-        <p className="text-[#FF6240] cursor-pointer underline underline-[#FF6240]">
+        <p
+          onClick={() => router.push("/events")}
+          className="text-[#FF6240] cursor-pointer underline underline-[#FF6240]"
+        >
           Back to all events
         </p>
         <div className="mt-5 flex flex-col md:flex-row gap-3 justify-between md:items-center">
