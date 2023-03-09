@@ -15,8 +15,8 @@ const Landing = () => {
                 {texusArray.map((item, index) => (
                     <span key={index} className="text-white font-[Sniglet] text-2xl md:text-4xl lg:text-6xl text-center textSpan">{item}</span>
                 ))}
+            <h1 className="absolute bottom-10 md:bottom-0 lg:bottom-32 font-sniglet flex justify-center w-full text-white text-center text-lg lg:text-2xl">21 & 22 APRIL 2023</h1>
             </div>
-            {/* <h1 className="absolute bottom-20 text-white text-center text-2xl w-full">21 & 22 APRIL 2023</h1> */}
         </section>
     )
 }

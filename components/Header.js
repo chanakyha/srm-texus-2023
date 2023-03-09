@@ -6,10 +6,10 @@ const Header = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
   const router = useRouter();
 
-  const contents = ["EVENTS", "ABOUT", "SCHEDULE", "SPONSORS", "CONTACT"];
+  const contents = ["events", "about", "schedule", "sponsors", "contact"];
 
   return (
-    <>
+    <div className="fixed w-full z-[999] top-0">
       <Drawer
         title="Contents"
         style={{
@@ -54,7 +54,7 @@ const Header = () => {
             return (
               <p
                 key={key}
-                className="navButton"
+                className="navButton capitalize"
                 onClick={() => {
                   router.replace(`/${content}`);
                   setOpenDrawer(!openDrawer);
@@ -106,7 +106,7 @@ const Header = () => {
           />
         </svg>
       </div>
-    </>
+    </div>
   );
 };
 
