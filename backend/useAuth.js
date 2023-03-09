@@ -1,21 +1,23 @@
 import React, { useContext } from "react";
 import { useEffect } from "react";
 import { createContext } from "react";
+import { doc, setDoc, getDoc } from "firebase/firestore";
+import { useRouter } from "next/router";
 import {
   GoogleAuthProvider,
   onAuthStateChanged,
   signInWithPopup,
   signOut,
 } from "firebase/auth";
-import { auth } from "../firebase";
+import { auth, db } from "./firebase";
 import { useState } from "react";
-import toast from "react-hot-toast";
 
 const AuthContext = createContext({});
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState([]);
   const googleProvider = new GoogleAuthProvider();
+  const router = useRouter();
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -29,8 +31,25 @@ const AuthProvider = ({ children }) => {
 
   const onSignin = () => {
     signInWithPopup(auth, googleProvider)
-      .then(() => {
-        toast.success("Logged in Successfully");
+      .then((user) => {
+        setDoc(
+          doc(db, "students", user.user.uid),
+          {
+            authName: user.user.displayName,
+            authEmail: user.user.email,
+            authPhoto: user.user.photoURL,
+            authUid: user.user.uid,
+          },
+          { merge: true }
+        ).then(async () => {
+          const docSnap = await getDoc(doc(db, "students", user.user.uid));
+          if (docSnap?.data()?.texusId) {
+            console.log("User already exists");
+          } else {
+            router.replace("/register");
+          }
+        });
+        console.log("Logged in Successfully");
       })
       .catch(console.warn);
   };
@@ -38,10 +57,10 @@ const AuthProvider = ({ children }) => {
   const onSignout = () => {
     signOut(auth)
       .then(() => {
-        toast.success("Logged out successfully");
+        console.log("Logged out successfully");
       })
       .catch(() => {
-        toast.error("Error logging out");
+        console.log("Error logging out");
       });
   };
 

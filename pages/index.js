@@ -12,10 +12,10 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="w-full bg-black">
-        <Landing/>
-        <Carousel/>
-        <Tagline/>
-        <EventDetails/>
+        <Landing />
+        <Carousel />
+        <Tagline />
+        <EventDetails />
       </main>
     </div>
   );
