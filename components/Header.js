@@ -6,10 +6,10 @@ const Header = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
   const router = useRouter();
 
-  const contents = ["events", "about texus", "schedule", "sponsors"];
+  const contents = ["events", "about", "schedule", "sponsors", "contact"];
 
   return (
-    <>
+    <div className="fixed w-full z-[999] top-0">
       <Drawer
         title="Contents"
         style={{
@@ -54,7 +54,7 @@ const Header = () => {
             return (
               <p
                 key={key}
-                className="navButton"
+                className="navButton capitalize"
                 onClick={() => {
                   router.replace(`/${content}`);
                   setOpenDrawer(!openDrawer);
@@ -71,7 +71,7 @@ const Header = () => {
           onClick={() => router.replace("/")}
           className="navButton tracking-[1rem] text-xl"
         >
-          Texus
+          TEXUS
         </h1>
 
         <div className="space-x-10 items-center hidden lg:inline-flex">
@@ -106,7 +106,7 @@ const Header = () => {
           />
         </svg>
       </div>
-    </>
+    </div>
   );
 };
 
