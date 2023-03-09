@@ -85,7 +85,7 @@ const Header = () => {
               </p>
             );
           })}
-          <button className="navButton bg-red-500 px-3 py-1 active:scale-75 ease-out duration-100 rounded-lg font-bold to-[#FF0000]">
+          <button className="navButton bg-gradient-to-r from-[#FFEA2C] to-[#179EBB]   px-3 py-1 active:scale-75 ease-out duration-100 rounded-lg font-bold to-[#FF0000]">
             Register Now
           </button>
         </div>
