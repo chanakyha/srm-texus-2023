@@ -9,3 +9,7 @@
     @apply text-black capitalize tracking-widest font-sniglet text-lg dark:text-white cursor-pointer;
   }
 }
+
+.body{
+  background-color:black;
+}
