@@ -14,6 +14,8 @@ module.exports = {
       animation: {
         marquee: 'marquee 25s linear infinite',
         marquee2: 'marquee2 25s linear infinite',
+        infinityAnimation: 'infinityAnimation 6s ease-out forwards',
+        maxWidth: 'maxWidth 10.9s linear forwards'
       },
       keyframes: {
         marquee: {
@@ -24,6 +26,14 @@ module.exports = {
           '0%': { transform: 'translateX(100%)' },
           '100%': { transform: 'translateX(0%)' },
         },
+        infinityAnimation: {
+          '0%': {backgroundSize: '1000vw 1000vh'},
+          '100%': {backgroundSize: '80% 60%'}
+        },
+        maxWidsdfth: {
+          '0%': {maxWidth: 'none'},
+          '100%': {maxWidth: '64rem'}
+        }
       },
     },
   },

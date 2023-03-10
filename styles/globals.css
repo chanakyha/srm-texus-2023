@@ -13,22 +13,34 @@
   animation-fill-mode: forwards;
   animation-iteration-count: 1;
 }
+.textSpan2 {
+  opacity: 0;
+  display: inline-block;
+  animation-name: animateText;
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
+.textSpan2{
+  animation-delay: 7.8s;
+}
 .textSpan:nth-child(1) {
-  animation-delay: 0.2s;
+  animation-delay: 6.2s;
 }
 .textSpan:nth-child(2) {
-  animation-delay: 0.4s;
+  animation-delay: 6.4s;
 }
 .textSpan:nth-child(3) {
-  animation-delay: 0.8s;
-  color: #000;
-  visibility: hidden;
+animation-delay: 6.8s;
+color: #000;
+/* visibility: hidden; */
 }
 .textSpan:nth-child(4) {
-  animation-delay: 1.2s;
+  animation-delay: 7.2s;
 }
 .textSpan:nth-child(5) {
-  animation-delay: 1.6s;
+  animation-delay: 7.6s;
 }
 
 @keyframes animateText {
@@ -46,7 +58,7 @@
 
 @layer components {
   .navButton {
-    @apply text-black capitalize tracking-widest font-sniglet text-lg dark:text-white cursor-pointer;
+    @apply text-black capitalize tracking-widest font-sniglet text-sm dark:text-white cursor-pointer;
   }
 }
 
@@ -148,6 +160,27 @@ h2 {
   .container .card h2 {
     right: 70px;
     font-size: 20px;
+  }
+
+  .textSpan2{
+    animation-delay: 1.8s;
+  }
+  .textSpan:nth-child(1) {
+    animation-delay: 0.2s;
+  }
+  .textSpan:nth-child(2) {
+    animation-delay: 0.4s;
+  }
+  .textSpan:nth-child(3) {
+  animation-delay: 0.8s;
+  color: #000;
+  /* visibility: hidden; */
+  }
+  .textSpan:nth-child(4) {
+    animation-delay: 1.2s;
+  }
+  .textSpan:nth-child(5) {
+    animation-delay: 1.6s;
   }
 }
 .container .card .fa-arrow-right {

@@ -43,18 +43,15 @@ const EventDescription = () => {
   };
 
   return (
-    <div className="min-h-screen mt-20 w-full bg-black font-montserrat">
+    <div className="min-h-screen max-w-6xl mx-auto w-full py-[100px] bg-black font-sniglet">
       <Image
         alt=""
-        className="lg:p-15 md:p-10 pb-5 w-full md:rounded-[3.5rem]"
+        className="lg:p-15 pb-5 w-full h-96 lg:h-full lg:rounded-md"
         src={require("../../assets/images/event-desc-blank.jpg")}
       />
 
-      <div className="lg:p-20 p-5 pt-0 lg:pt-0 text-lg font-semibold">
-        <p
-          onClick={() => router.push("/events")}
-          className="text-[#FF6240] cursor-pointer underline underline-[#FF6240]"
-        >
+      <div className="lg:p-0 p-4 md:p-16 pt-0 lg:mt-10 text-lg">
+        <p className="text-[#FF6240] cursor-pointer underline underline-[#FF6240]">
           Back to all events
         </p>
         <div className="mt-5 flex flex-col md:flex-row gap-3 justify-between md:items-center">
@@ -129,12 +126,12 @@ const EventDescription = () => {
               />
             </svg>
 
-            <p className="text-white font-light">{event?.venue}</p>
+            <p className="text-white">{event?.venue}</p>
           </div>
         </div>
         <div className="my-10">
           <h1 className="text-white text-3xl">Event Description</h1>
-          <p className="text-white font-light mt-3">
+          <p className="text-gray-400 text-justify mt-3">
             Voluptate consectetur aute excepteur est cillum nisi esse sit ad non
             aliquip consectetur quis voluptate. Dolor mollit mollit elit
             reprehenderit est. Tempor eu magna mollit officia ea aliquip
@@ -150,7 +147,7 @@ const EventDescription = () => {
         </div>
         <div className="my-10">
           <h1 className="text-white text-3xl">Event Rules</h1>
-          <p className="text-white font-light mt-3">{event?.rules}</p>
+          <p className="text-gray-400 text-justify mt-3">{event?.rules}</p>
         </div>
         <div className="my-10 space-y-10 md:space-y-0 flex flex-col md:flex-row justify-between">
           <div className="flex flex-col">
@@ -180,19 +177,23 @@ const EventDescription = () => {
           </div>
           <div className="text-white">
             <h1>Student Coordinators</h1>
-            {event?.studentCo.map((student, index) => (
-              <p key={index} className="font-light">
-                {index + 1}) {student}
-              </p>
-            ))}
+            <div className="flex gap-4">
+              {event?.studentCo.map((student, index) => (
+                <p key={index} className="font-light">
+                  &#x2022; {student}
+                </p>
+              ))}
+            </div>
           </div>
           <div className="text-white">
             <h1>Staff Coordinators</h1>
-            {event?.staffCo.map((staff, index) => (
-              <p key={index} className="font-light">
-                {index + 1}) {staff}
-              </p>
-            ))}
+            <div className="flex gap-4">
+              {event?.staffCo.map((staff, index) => (
+                <p key={index} className="font-light">
+                  &#x2022; {staff}
+                </p>
+              ))}
+            </div>
           </div>
         </div>
       </div>
