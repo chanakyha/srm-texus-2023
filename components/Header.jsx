@@ -1,15 +1,28 @@
 import { Drawer } from "antd";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 const Header = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
   const router = useRouter();
+  const navRef = useRef(null);
 
   const contents = ["events", "about", "schedule", "sponsors", "contact"];
 
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      navRef.current.classList.toggle('opacity-0')
+
+    }, 8500)
+  
+    return () => {
+        clearTimeout(timeout);
+    }
+  }, [])
+  
+
   return (
-    <div className="fixed w-full z-[999] top-0">
+    <nav className="fixed w-full z-[999] top-0 opacity-0 transistion-all duration-300" ref={navRef}>
       <Drawer
         title="Contents"
         style={{
@@ -20,7 +33,6 @@ const Header = () => {
             <button className="text-white bg-red-500 px-3 py-1 rounded-lg">
               Register Now
             </button>
-            ,
           </div>
         }
         closeIcon={
@@ -80,13 +92,13 @@ const Header = () => {
               <p
                 onClick={() => router.replace(`/${content}`)}
                 key={key}
-                className="navButton"
+                className="navButton font-montserrat"
               >
                 {content}
               </p>
             );
           })}
-          <button className="navButton bg-gradient-to-r from-[#FFEA2C] to-[#179EBB]   px-3 py-1 active:scale-75 ease-out duration-100 rounded-lg font-bold to-[#FF0000]">
+          <button className="navButton bg-gradient-to-r font-montserrat text-black from-[#FFEA2C] to-[#179EBB] px-4 py-2 active:scale-75 ease-out duration-100 rounded-lg font-semibold to-[#FF0000]">
             Register Now
           </button>
         </div>
@@ -106,7 +118,7 @@ const Header = () => {
           />
         </svg>
       </div>
-    </div>
+    </nav>
   );
 };
 
