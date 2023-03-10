@@ -20,7 +20,6 @@ const Header = () => {
             <button className="text-white bg-red-500 px-3 py-1 rounded-lg">
               Register Now
             </button>
-            ,
           </div>
         }
         closeIcon={
