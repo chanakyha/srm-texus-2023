@@ -130,7 +130,7 @@ const EventDescription = () => {
           </div>
         </div>
         <div className="my-10">
-          <h1 className="text-white text-3xl">Event Description</h1>
+          <h1 className="text-white text-3xl font-medium">Event Description</h1>
           <p className="text-gray-400 text-justify mt-3">
             Voluptate consectetur aute excepteur est cillum nisi esse sit ad non
             aliquip consectetur quis voluptate. Dolor mollit mollit elit
@@ -146,7 +146,7 @@ const EventDescription = () => {
           </p>
         </div>
         <div className="my-10">
-          <h1 className="text-white text-3xl">Event Rules</h1>
+          <h1 className="text-white text-3xl font-medium">Event Rules</h1>
           <p className="text-gray-400 text-justify mt-3">{event?.rules}</p>
         </div>
         <div className="my-10 space-y-10 md:space-y-0 flex flex-col md:flex-row justify-between">
