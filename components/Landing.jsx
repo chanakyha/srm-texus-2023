@@ -25,30 +25,30 @@ const Landing = () => {
         }, []);
       
         return (
-          <div className="flex flex-row justify-center" role="timer">
-            <div className="px-2">
-              <div className="border-2 p-5 text-4xl font-bold border-slate-300 rounded-md">
-                <p>{days < 10 ? "0" + days : days}</p>
+          <div className="flex flex-row gap-4 justify-center items-center p-4" role="timer">
+            <div className="flex flex-col md:w-24 justify-center items-center">
+              <div className="border-2 w-16 flex justify-center items-center h-16 text-xs md:text-sm lg:text-lg font-bold border-slate-400/50 rounded-md">
+                <p className="animate-pulse">{days < 10 ? "0" + days : days}</p>
               </div>
-                <span className="text">Days</span>
+                <span className="lg:text-lg mt-2 text-sm">Days</span>
             </div>
-            <div className="px-2">
-              <div className="border-2 p-5 text-4xl font-bold border-slate-300 rounded-md">
-                <p>{hours < 10 ? "0" + hours : hours}</p>
+            <div className="flex flex-col md:w-24 justify-center items-center">
+              <div className="border-2 w-16 flex justify-center items-center h-16 text-xs md:text-sm lg:text-lg font-bold border-slate-400/50 rounded-md">
+                <p className="animate-pulse">{hours < 10 ? "0" + hours : hours}</p>
               </div>
-                <span className="text">Hours</span>
+                <span className="lg:text-lg mt-2 text-sm">Hours</span>
             </div>
-            <div className="px-2">
-              <div className="border-2 p-5 text-4xl font-bold border-slate-300 rounded-md">
-                <p>{minutes < 10 ? "0" + minutes : minutes}</p>
+            <div className="flex flex-col md:w-24 justify-center items-center">
+              <div className="border-2 w-16 flex justify-center items-center h-16 text-xs md:text-sm lg:text-lg font-bold border-slate-400/50 rounded-md">
+                <p className="animate-pulse">{minutes < 10 ? "0" + minutes : minutes}</p>
               </div>
-                <span className="text">Minutes</span>
+                <span className="lg:text-lg mt-2 text-sm">Minutes</span>
             </div>
-            <div className="px-2">
-              <div className="border-2 p-5 text-4xl font-bold border-slate-300 rounded-md">
-                <p>{seconds < 10 ? "0" + seconds : seconds}</p>
+            <div className="flex flex-col md:w-24 justify-center items-center">
+              <div className="border-2 w-16 flex justify-center items-center h-16 text-xs md:text-sm lg:text-lg font-bold border-slate-400/50 rounded-md">
+                <p className="animate-pulse">{seconds < 10 ? "0" + seconds : seconds}</p>
               </div>
-                <span className="text">Seconds</span>
+                <span className="lg:text-lg mt-2 text-sm">Seconds</span>
             </div>
           </div>
         );
@@ -68,8 +68,8 @@ const Landing = () => {
                 {texusArray.map((item, index) => (
                     <span key={index} className="text-white font-[Sniglet] text-2xl md:text-4xl lg:text-6xl text-center textSpan">{item}</span>
                 ))}
-            <h1 className="absolute bottom-20 md:bottom-10 font-montserrat flex justify-center w-full text-white text-center text-lg lg:text-2xl uppercase">Coming Soon!</h1>
-            <div className="absolute bottom-40 md:bottom-20 font-montserrat flex justify-center w-full text-white text-center text-lg lg:text-2xl mt-10"><Timer/></div>
+            <h1 className="absolute bottom-20 md:bottom-10 lg:bottom-5 font-montserrat flex justify-center w-full text-white text-center text-lg lg:text-2xl uppercase">Coming Soon!</h1>
+            <div className="absolute bottom-40 md:bottom-20 lg:bottom-10 font-montserrat flex justify-center w-full text-white text-center text-lg lg:text-2xl mt-10"><Timer/></div>
             </div>
         </section>
         </>
