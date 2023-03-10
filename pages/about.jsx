@@ -2,14 +2,16 @@ import React from "react";
 import Carousel from "../components/Carousel";
 import Image from "next/image";
 
-export default function about() {
+export default function About() {
   return (
-    <div className="about flex flex-col items-center justify-center">
-      <div className="about-container w-[90%]">
+    <div className="flex w-full flex-col items-center justify-center">
+      <div className="max-w-5xl mx-auto">
         <h1 className="mt-[10vh] text-8xl font-semibold font-[Montserrat]">
           About
         </h1>
-        {/* <Carousel /> */}
+        <div>
+          <Carousel />
+        </div>
         <p className="py-[3vh] font-[Sniglet] md:text-2xl mb-[4vh] text-justify">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
           ducimus. Numquam cum quo ipsam esse autem tempore perspiciatis aut
@@ -36,7 +38,7 @@ export default function about() {
           unde voluptatem recusandae soluta consectetur!
         </p>
       </div>
-      <div className="about-srm flex items-center justify-center md:bg-gradient-to-l bg-gradient-to-b  from-gray-600 via-gray-700 via-gray-900 via-black to-black ">
+      <div className="about-srm flex items-center justify-center md:bg-gradient-to-l bg-gradient-to-b  from-gray-600 via-gray-700 to-black ">
         <div className="flex flex-col md:flex-row w-[90%] items-center justify-between py-[15vh]">
           <div className="text md:w-[60%] w-[90%] mr-[3%] md:mt-[0px] mt-[50px]">
             <h3 className="text-4xl font-bold align-end justify-end md:text-end from-[#ffea2c] [#ff6240] [#179ebb] to-[#ff0000] bg-gradient-to-r bg-clip-text text-transparent font-[Montserrat]">
@@ -52,7 +54,7 @@ export default function about() {
               cumque voluptate veniam!
             </p>
           </div>
-          <div className="md:h-[500px] md:w-[500px] h-[300px] w-[300px] flex relative relative mr-[2%] order-[-1] md:order-[1]">
+          <div className="md:h-[500px] md:w-[500px] h-[300px] w-[300px] flex relative mr-[2%] order-[-1] md:order-[1]">
             <div className="image-container rounded-3xl overflow-hidden">
               <Image
                 className="rounded-3xl"
