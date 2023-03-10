@@ -4,7 +4,7 @@ import NonTechEvents from "../components/NonTechEvents";
 
 const EventsDetails = () => {
     return (
-        <div className="w-full bg-black p-4 md:p-16 text-white">
+        <div className="w-full bg-black p-4 md:mt-16 text-white">
             <div className="w-full  bg-black relative max-w-5xl mx-auto bg-[url('../assets/images/bgoverlay.png')] bg-contain bg-no-repeat bg-center">
                 <div className="absolut top-0 w-full">
                     <section id="events-details" className="container mt-16 w-full h-full grid grid-cols-1 gap-4 lg:gap-12 md:grid-cols-2">

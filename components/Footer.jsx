@@ -9,7 +9,7 @@ function Footer() {
     const contents = ["EVENTS", "ABOUT", "SCHEDULE", "SPONSORS", "CONTACT"];
   return (
     <>
-        <footer className="w-full mt-3 font-montserrat text-white bg-[url('../assets/images/footer.png')] bg-center bg-fill bg-no-repeat">
+        <footer className="w-full font-montserrat text-white bg-[url('../assets/images/footer.png')] bg-top bg-fill bg-no-repeat">
         <div className="mx-auto max-w-screen-xl py-8 px-4">
             <div className="md:flex md:justify-between">
                 <div className="mb- md:mb-0 w-full flex justify-center md:justify-start">
