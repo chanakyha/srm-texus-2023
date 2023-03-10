@@ -1,9 +1,13 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { technicalEvents } from "../../assets/events";
-
+import { doc, setDoc } from "firebase/firestore";
+import { useAuth } from "../../backend/useAuth";
+import { db } from "../../backend/firebase";
+import Error from "next/error";
 const EventDescription = () => {
   const router = useRouter();
+  const { user } = useAuth();
 
   const { eventId } = router.query;
 
@@ -11,22 +15,46 @@ const EventDescription = () => {
   console.log(event);
 
   if (!event || event == undefined) {
-    return <div>No Event Found</div>;
+    return <Error statusCode={404} />;
   }
 
+  const addToCart = async () => {
+    if (user) {
+      setDoc(
+        doc(db, "students", user.uid, "cart", `${event.id}`),
+        {
+          name: event.eventName,
+          price: event.entryFee,
+          time: event.time,
+          venue: event.venue,
+          date: event.date,
+        },
+        {
+          merge: true,
+        }
+      )
+        .then(() => {
+          console.log("Added to cart");
+        })
+        .catch(console.warn);
+    } else {
+      alert("Please Login");
+    }
+  };
+
   return (
-    <div className="min-h-screen w-full bg-black font-montserrat">
+    <div className="min-h-screen max-w-6xl mx-auto w-full py-[100px] bg-black font-sniglet">
       <Image
         alt=""
-        className="lg:p-15 md:p-10 pb-5 w-full md:rounded-[3.5rem]"
+        className="lg:p-15 pb-5 w-full h-96 lg:h-full lg:rounded-md"
         src={require("../../assets/images/event-desc-blank.jpg")}
       />
 
-      <div className="lg:p-20 p-5 pt-0 lg:pt-0 text-lg font-semibold">
+      <div className="lg:p-0 p-4 md:p-16 pt-0 lg:mt-10 text-lg">
         <p className="text-[#FF6240] cursor-pointer underline underline-[#FF6240]">
           Back to all events
         </p>
-        <div className="mt-5 flex justify-between items-center">
+        <div className="mt-5 flex flex-col md:flex-row gap-3 justify-between md:items-center">
           <div>
             <h1 className="text-white text-2xl md:text-4xl lg:text-6xl">
               {event?.eventName}
@@ -35,8 +63,11 @@ const EventDescription = () => {
               By {event?.clubName}
             </p>
           </div>
-          <button className="bg-red-500 px-4 py-2 rounded-lg text-white">
-            Register Now
+          <button
+            onClick={addToCart}
+            className="bg-red-500 px-4 py-2 rounded-lg text-white"
+          >
+            Add Ticket to Cart
           </button>
         </div>
         <div className="flex flex-col md:flex-row space-y-1 md:space-y-0 justify-between my-10">
@@ -95,12 +126,12 @@ const EventDescription = () => {
               />
             </svg>
 
-            <p className="text-white font-light">{event?.venue}</p>
+            <p className="text-white">{event?.venue}</p>
           </div>
         </div>
         <div className="my-10">
           <h1 className="text-white text-3xl">Event Description</h1>
-          <p className="text-white font-light mt-3">
+          <p className="text-gray-400 text-justify mt-3">
             Voluptate consectetur aute excepteur est cillum nisi esse sit ad non
             aliquip consectetur quis voluptate. Dolor mollit mollit elit
             reprehenderit est. Tempor eu magna mollit officia ea aliquip
@@ -116,7 +147,7 @@ const EventDescription = () => {
         </div>
         <div className="my-10">
           <h1 className="text-white text-3xl">Event Rules</h1>
-          <p className="text-white font-light mt-3">{event?.rules}</p>
+          <p className="text-gray-400 text-justify mt-3">{event?.rules}</p>
         </div>
         <div className="my-10 space-y-10 md:space-y-0 flex flex-col md:flex-row justify-between">
           <div className="flex flex-col">
@@ -146,19 +177,23 @@ const EventDescription = () => {
           </div>
           <div className="text-white">
             <h1>Student Coordinators</h1>
-            {event?.studentCo.map((student, index) => (
-              <p key={index} className="font-light">
-                {index + 1}) {student}
-              </p>
-            ))}
+            <div className="flex gap-4">
+              {event?.studentCo.map((student, index) => (
+                <p key={index} className="font-light">
+                  &#x2022; {student}
+                </p>
+              ))}
+            </div>
           </div>
           <div className="text-white">
             <h1>Staff Coordinators</h1>
-            {event?.staffCo.map((staff, index) => (
-              <p key={index} className="font-light">
-                {index + 1}) {staff}
-              </p>
-            ))}
+            <div className="flex gap-4">
+              {event?.staffCo.map((staff, index) => (
+                <p key={index} className="font-light">
+                  &#x2022; {staff}
+                </p>
+              ))}
+            </div>
           </div>
         </div>
       </div>
