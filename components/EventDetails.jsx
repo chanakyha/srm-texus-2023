@@ -13,7 +13,7 @@ const EventsDetails = () => {
                     </section>
                     <section className="font-montserrat w-full h-full my-16 lg:my-32">
                         <div className="mb-16 lg:mb-32">
-                            <h1 className="text-center text-xl md:text-3xl ">Pro Shows</h1>
+                            <h1 className="text-white font-normal text-2xl md:text-4xl lg:text-5xl text-center">Pro Shows</h1>
                         </div>
                         <div className="w-full h-full mt-12 grid grid-cols-1 gap-4 lg:gap-12 lg:grid-cols-2">
                             <div className="w-full h-56 lg:h-full cursor-pointer lg:row-span-2 transition-all duration-300 rounded-md bg-[url('https://s3-alpha-sig.figma.com/img/85d0/46ca/7944524fdcde845bcad699095e361241?Expires=1679270400&Signature=nE~Hxb-8uPTz6IrlJvHtJsvJRuPJFEWhgllcjJ1WzB-ADP0opT7yOoz1PsQI9fylDjGtPvkY1yJAUVyyDP6LVybxx~s1sfZ652Fr-i4h4hOsW-x7ASv90Gu0SwI5FP35p3vyuXxJ62kJ6ijw~dXou~0WzfzxwAbJb-50pj13rt8C~mK3a1Ce74M7D5uI~KE2aBvtqNZA6NOtSEv~bK~xCxWibFJ5-oNifs6ftgj2iRNTJwPbsm1rItE-u6glixpE1HsurCD0qJi45wjl~N9I0QdvxF2V~oKcU~GumY8w5EWkwVIQFvNBT6eKEcHEJ8RUioIWx0fk4gNKBFYmV1V7sQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4')] bg-cover bg-no-repeat bg-center">
