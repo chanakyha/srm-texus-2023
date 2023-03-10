@@ -8,7 +8,8 @@ const Landing = () => {
         <section className="w-full animate-maxWidth relative h-96 md:min-h-screen overflow-clip p-4 bg-black mx-auto">
         <div className="bg-contain animate-none lg:animate-infinityAnimation w-full h-full bg-[url('../assets/images/InfinityWhite.png')] bg-no-repeat bg-center flex justify-center items-center">
             <video className='w-[3000px] mix-blend-multiply h-full bg-black' autoplay={"autoplay"} muted loop>
-                <source src={"https://res.cloudinary.com/dwncfhjpd/video/upload/v1678348481/samples/bgvideo_aewv6w.mp4"} type="video/mp4"/>
+                <source src={"https://res.cloudinary.com/dwncfhjpd/video/upload/v1678438021/samples/bgvideo1_mouerm.mp4"} type="video/mp4"/>
+                {/* <source src={"https://res.cloudinary.com/dwncfhjpd/video/upload/v1678348481/samples/bgvideo_aewv6w.mp4"} type="video/mp4"/> */}
             </video>
         </div>
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full flex justify-evenly items-center max-w-3xl md:max-w-5xl mx-auto">
