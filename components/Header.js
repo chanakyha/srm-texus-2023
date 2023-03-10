@@ -10,7 +10,7 @@ const Header = () => {
 
   return (
     <div className="fixed w-full z-[999] top-0">
-      <Drawer
+      {/* <Drawer
         title="Contents"
         style={{
           fontFamily: "Sniglet, cursive",
@@ -65,15 +65,15 @@ const Header = () => {
             );
           })}
         </div>
-      </Drawer>
-      <div className="flex bg-white justify-between duration-1000 transition-all ease-out py-5 px-10 items-center dark:bg-black">
+      </Drawer> */}
+      <div className="flex bg-white justify-center duration-1000 transition-all ease-out py-5 px-10 items-center dark:bg-black">
         <h1
           onClick={() => router.replace("/")}
           className="navButton tracking-[1rem] text-xl"
         >
-          TEXUS
+          SRMIST RAMAPURAM 
         </h1>
-
+{/* 
         <div className="space-x-10 items-center hidden lg:inline-flex">
           {contents.map((content, key) => {
             return (
@@ -86,9 +86,9 @@ const Header = () => {
               </p>
             );
           })}
-          <button className="navButton bg-gradient-to-r from-[#FFEA2C] to-[#179EBB]   px-3 py-1 active:scale-75 ease-out duration-100 rounded-lg font-bold to-[#FF0000]">
-            Register Now
-          </button>
+          <div className="navButton px-3 py-1 active:scale-75 ease-out duration-100 rounded-lg font-bold">
+            DEPARTMENT OF CSE
+          </div>
         </div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -104,7 +104,7 @@ const Header = () => {
             strokeLinejoin="round"
             d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75"
           />
-        </svg>
+        </svg> */}
       </div>
     </div>
   );
