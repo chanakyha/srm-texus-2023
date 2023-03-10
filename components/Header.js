@@ -1,26 +1,40 @@
 import { Drawer } from "antd";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
+import { useAuth } from "../backend/useAuth";
 
 const Header = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
   const router = useRouter();
+
+  const { user, onSignin, onSignout } = useAuth();
 
   const contents = ["events", "about", "schedule", "sponsors", "contact"];
 
   return (
     <div className="fixed w-full z-[999] top-0">
       <Drawer
-        title="Contents"
+        title={user ? user.displayName : "Contents"}
         style={{
           fontFamily: "Sniglet, cursive",
         }}
         extra={
           <div>
-            <button className="text-white bg-red-500 px-3 py-1 rounded-lg">
-              Register Now
-            </button>
-            ,
+            {user ? (
+              <button
+                onClick={onSignout}
+                className="text-white bg-red-500 px-3 py-1 rounded-lg"
+              >
+                View Dashboard
+              </button>
+            ) : (
+              <button
+                onClick={onSignin}
+                className="text-white bg-red-500 px-3 py-1 rounded-lg"
+              >
+                Login/Register
+              </button>
+            )}
           </div>
         }
         closeIcon={
@@ -56,7 +70,7 @@ const Header = () => {
                 key={key}
                 className="navButton capitalize"
                 onClick={() => {
-                  router.replace(`/${content}`);
+                  router.push(`/${content}`);
                   setOpenDrawer(!openDrawer);
                 }}
               >
@@ -68,7 +82,7 @@ const Header = () => {
       </Drawer>
       <div className="flex bg-white justify-between duration-1000 transition-all ease-out py-5 px-10 items-center dark:bg-black">
         <h1
-          onClick={() => router.replace("/")}
+          onClick={() => router.push("/")}
           className="navButton tracking-[1rem] text-xl"
         >
           TEXUS
@@ -78,7 +92,7 @@ const Header = () => {
           {contents.map((content, key) => {
             return (
               <p
-                onClick={() => router.replace(`/${content}`)}
+                onClick={() => router.push(`/${content}`)}
                 key={key}
                 className="navButton"
               >
@@ -86,9 +100,21 @@ const Header = () => {
               </p>
             );
           })}
-          <button className="navButton bg-gradient-to-r from-[#FFEA2C] to-[#179EBB]   px-3 py-1 active:scale-75 ease-out duration-100 rounded-lg font-bold to-[#FF0000]">
-            Register Now
-          </button>
+          {user ? (
+            <button
+              onClick={onSignout}
+              className="text-white bg-red-500 px-3 py-1 rounded-lg"
+            >
+              View Dashboard
+            </button>
+          ) : (
+            <button
+              onClick={onSignin}
+              className="text-white bg-red-500 px-3 py-1 rounded-lg"
+            >
+              Login/Register
+            </button>
+          )}
         </div>
         <svg
           xmlns="http://www.w3.org/2000/svg"

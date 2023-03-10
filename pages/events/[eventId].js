@@ -1,9 +1,13 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { technicalEvents } from "../../assets/events";
-
+import { doc, setDoc } from "firebase/firestore";
+import { useAuth } from "../../backend/useAuth";
+import { db } from "../../backend/firebase";
+import Error from "next/error";
 const EventDescription = () => {
   const router = useRouter();
+  const { user } = useAuth();
 
   const { eventId } = router.query;
 
@@ -11,11 +15,35 @@ const EventDescription = () => {
   console.log(event);
 
   if (!event || event == undefined) {
-    return <div>No Event Found</div>;
+    return <Error statusCode={404} />;
   }
 
+  const addToCart = async () => {
+    if (user) {
+      setDoc(
+        doc(db, "students", user.uid, "cart", `${event.id}`),
+        {
+          name: event.eventName,
+          price: event.entryFee,
+          time: event.time,
+          venue: event.venue,
+          date: event.date,
+        },
+        {
+          merge: true,
+        }
+      )
+        .then(() => {
+          console.log("Added to cart");
+        })
+        .catch(console.warn);
+    } else {
+      alert("Please Login");
+    }
+  };
+
   return (
-    <div className="min-h-screen w-full bg-black font-montserrat">
+    <div className="min-h-screen mt-20 w-full bg-black font-montserrat">
       <Image
         alt=""
         className="lg:p-15 md:p-10 pb-5 w-full md:rounded-[3.5rem]"
@@ -23,10 +51,13 @@ const EventDescription = () => {
       />
 
       <div className="lg:p-20 p-5 pt-0 lg:pt-0 text-lg font-semibold">
-        <p className="text-[#FF6240] cursor-pointer underline underline-[#FF6240]">
+        <p
+          onClick={() => router.push("/events")}
+          className="text-[#FF6240] cursor-pointer underline underline-[#FF6240]"
+        >
           Back to all events
         </p>
-        <div className="mt-5 flex justify-between items-center">
+        <div className="mt-5 flex flex-col md:flex-row gap-3 justify-between md:items-center">
           <div>
             <h1 className="text-white text-2xl md:text-4xl lg:text-6xl">
               {event?.eventName}
@@ -35,8 +66,11 @@ const EventDescription = () => {
               By {event?.clubName}
             </p>
           </div>
-          <button className="bg-red-500 px-4 py-2 rounded-lg text-white">
-            Register Now
+          <button
+            onClick={addToCart}
+            className="bg-red-500 px-4 py-2 rounded-lg text-white"
+          >
+            Add Ticket to Cart
           </button>
         </div>
         <div className="flex flex-col md:flex-row space-y-1 md:space-y-0 justify-between my-10">
