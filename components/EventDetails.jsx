@@ -5,7 +5,7 @@ import NonTechEvents from "../components/NonTechEvents";
 const EventsDetails = () => {
     return (
         <div className="w-full bg-black p-4 md:p-16 -scroll-pt-96 text-white">
-            <div className="w-full  bg-black relative max-w-5xl mx-auto bg-[url('../assets/images/bgoverlay.png')] bg-contain bg-no-repeat bg-center">
+            <div className="w-full  bg-black relative max-w-5xl mx-auto bg-[url('https://res.cloudinary.com/dwncfhjpd/image/upload/v1678565057/texus/bgoverlay_cvgli3.png')] bg-contain bg-no-repeat bg-center">
                 <div className="absolut top-0 w-full">
                     {/* <section id="events-details" className="w-full h-full grid grid-cols-1 gap-4 lg:gap-16 md:grid-cols-2">
                         <div className="w-full h-56 lg:h-80 lg:hover:scale-[105%] cursor-pointer transition-all duration-300 rounded-md bg-[url('../assets/images/eventcard.png')] bg-cover bg-no-repeat bg-center">

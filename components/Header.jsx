@@ -25,11 +25,11 @@ const Header = () => {
   
 
   return (
-    <nav className="fixed w-full z-[999] top-0 transistion-all duration-300">
+    <nav className="fixed w-full font-montserrat z-[999] top-0 transistion-all duration-300">
       <Drawer
         title={"Contents"}
         style={{
-          fontFamily: "Montserrat, cursive",
+          fontFamily: "Montserrat",
         }}
         // extra={
         //   <div>
@@ -73,7 +73,7 @@ const Header = () => {
                 key={key}
                 className="navButton capitalize"
                 onClick={() => {
-                  router.push(`/${content === "sponsors" ? "#sponsors" : `${content}`}`);
+                  router.push(`/${content === "sponsors" ? "#sponsors" : `${content === "events" ? "#events" : `${content}`}`}`);
                   setOpenDrawer(!openDrawer);
                 }}
               >

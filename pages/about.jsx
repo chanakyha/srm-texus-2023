@@ -1,14 +1,14 @@
 import React from "react";
-import Carousel from "../components/Carousel";
+// import Carousel from "../components/Carousel";
 import Image from "next/image";
 
 export default function About() {
   return (
     <div className="flex w-full flex-col font-montserrat items-center justify-center">
       <div className="w-full">
-        <div className="w-full lg:bg-[url('../assets/images/bgoverlay.png')] bg-right bg-cover bg-no-repeat">
+        <div className="w-full lg:bg-[url('https://res.cloudinary.com/dwncfhjpd/image/upload/v1678565057/texus/bgoverlay_cvgli3.png')] bg-top bg-cover bg-no-repeat">
           <div className="p-4 md:p-16 mt-16 max-w-6xl mx-auto">
-            <h1 className="text-white font-medium text-2xl md:text-4xl lg:text-6xl">
+            <h1 className="text-white font-medium text-2xl h-20 md:text-4xl lg:text-6xl">
               About <span className="font-sniglet tracking-[1rem]">Texus</span>
             </h1>
             <p className="text-gray-300 text-justify mt-3">

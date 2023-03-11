@@ -68,7 +68,6 @@ const Landing = () => {
                 {texusArray.map((item, index) => (
                     <span key={index} className="text-white font-[Sniglet] text-2xl md:text-4xl lg:text-6xl text-center textSpan">{item}</span>
                 ))}
-            {/* <h1 className="absolute bottom-20 md:bottom-10 lg:bottom-5 font-montserrat flex justify-center w-full text-white text-center text-lg lg:text-2xl uppercase">Coming Soon!</h1> */}
             <div className="absolute bottom-40 md:bottom-20 lg:bottom-10 font-montserrat flex justify-center w-full text-white text-center text-lg lg:text-2xl mt-10"><Timer/></div>
             </div>
         </section>
