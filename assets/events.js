@@ -2,7 +2,7 @@ export const technicalEvents = [
   {
     id: 23562356238501,
     eventName: "Mindwrap",
-    clubName: "Slug & Plug",
+    desc: "It's a coding event, that consists of 3 challenges. The a coding event, that consists challenges.",    clubName: "Slug & Plug",
     rules: "It's a coding event, that consists of 3 challenges.",
     staffCo: ["Mrs.C.Ashwini"],
     studentCo: ["Pranav", "Spandan"],
@@ -15,6 +15,7 @@ export const technicalEvents = [
     id: 23562356238502,
     eventName: "Pair-A-Thon",
     clubName: "TECH-WIZ",
+    desc: "It's a coding event, that consists of 3 challenges. The a coding event, that consists challenges.",
     rules:
       "A team coding competition, only two members will be allowed per team. Both members will work on a given problem to achieve the desired solution, by using the concept of Pair-Programming",
     staffCo: ["Dr.M.S.Antony Vigil", "Dr.M.S.Minu"],

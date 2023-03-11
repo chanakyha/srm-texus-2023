@@ -46,7 +46,7 @@ color: #000;
 
 @layer components {
   .navButton {
-    @apply text-black capitalize tracking-widest font-sniglet text-lg dark:text-white cursor-pointer;
+    @apply text-black capitalize tracking-widest font-sniglet text-sm dark:text-white cursor-pointer;
   }
 }
 
@@ -59,9 +59,14 @@ body {
   color: #fff;
 }
 
+html{
+}
 
 
 * {
+  scroll-behavior: smooth !important;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
   margin: 0;
   padding: 0;
   box-sizing: border-box;

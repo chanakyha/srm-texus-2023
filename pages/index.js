@@ -2,8 +2,8 @@ import Head from "next/head";
 import React, { useEffect, useState } from "react";
 import Landing from "../components/Landing";
 // import Tagline from "../components/Tagline";
-// import EventDetails from "../components/EventDetails";
-// import Carousel from "../components/Carousel";
+import EventDetails from "../components/EventDetails";
+import Sponsors from "../components/Sponsors";
 
 const Home = () => {
   
@@ -16,9 +16,10 @@ const Home = () => {
       </Head>
       <main className="w-full bg-black">
         <Landing/>
-        {/* <Carousel/>
-        <Tagline/>
-        <EventDetails/> */}
+        {/* <Carousel/> */}
+        {/* <Tagline/> */}
+        <EventDetails/>
+        <Sponsors/>
       </main>
     </div>
   );

@@ -13,8 +13,6 @@ function MyApp({ Component, pageProps }) {
     >
       <Header />
       <Component {...pageProps} />
-      {/* <Landing/> */}
-      {/* <Footer/> */}
     </ConfigProvider>
   );
 }
