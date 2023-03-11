@@ -59,7 +59,7 @@ const Landing = () => {
     return (
         <>
         <section className="w-full h-screen overflow-hidden p-4 bg-black relative max-w-5xl mx-auto">
-            <div className="w-full h-full bg-[url('../assets/images/Infinitywhite.png')] bg-contain bg-no-repeat bg-center  flex justify-center items-center">
+            <div className="w-full h-full bg-[url('https://i.ibb.co/xXzVsWm/Infinitywhite.png')] bg-contain bg-no-repeat bg-center  flex justify-center items-center">
               <video className='w-[3000px] mix-blend-multiply h-full' autoplay={"autoplay"} muted loop>
                     <source src={"https://res.cloudinary.com/dwncfhjpd/video/upload/v1678348481/samples/bgvideo_aewv6w.mp4"} type="video/mp4"/>
                 </video>
