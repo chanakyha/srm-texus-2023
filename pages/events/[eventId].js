@@ -43,7 +43,7 @@ const EventDescription = () => {
   };
 
   return (
-    <div className="min-h-screen max-w-6xl mx-auto w-full py-[100px] bg-black font-sniglet">
+    <div className="min-h-screen max-w-6xl mx-auto w-full py-[100px] bg-black font-montserrat">
       <Image
         alt=""
         className="lg:p-15 pb-5 w-full h-96 lg:h-full lg:rounded-md"
@@ -56,7 +56,7 @@ const EventDescription = () => {
         </p>
         <div className="mt-5 flex flex-col md:flex-row gap-3 justify-between md:items-center">
           <div>
-            <h1 className="text-white text-2xl md:text-4xl lg:text-6xl">
+            <h1 className="text-white font-medium text-2xl md:text-4xl lg:text-6xl">
               {event?.eventName}
             </h1>
             <p className="text-[#747474] capitalize text-xs md:text-sm lg:text-lg">
@@ -86,7 +86,7 @@ const EventDescription = () => {
                 d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z"
               />
             </svg>
-            <p className="text-white font-light">{event?.date}</p>
+            <p className="text-white font-medium">{event?.date}</p>
           </div>
           <div className="flex items-center space-x-2">
             <svg
@@ -103,7 +103,7 @@ const EventDescription = () => {
                 d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            <p className="text-white font-light">{event?.time}</p>
+            <p className="text-white font-medium">{event?.time}</p>
           </div>
           <div className="flex items-center space-x-2">
             <svg
@@ -126,11 +126,11 @@ const EventDescription = () => {
               />
             </svg>
 
-            <p className="text-white">{event?.venue}</p>
+            <p className="text-white font-medium  ">{event?.venue}</p>
           </div>
         </div>
         <div className="my-10">
-          <h1 className="text-white text-3xl">Event Description</h1>
+          <h1 className="text-white text-3xl font-medium">Event Description</h1>
           <p className="text-gray-400 text-justify mt-3">
             Voluptate consectetur aute excepteur est cillum nisi esse sit ad non
             aliquip consectetur quis voluptate. Dolor mollit mollit elit
@@ -146,7 +146,7 @@ const EventDescription = () => {
           </p>
         </div>
         <div className="my-10">
-          <h1 className="text-white text-3xl">Event Rules</h1>
+          <h1 className="text-white text-3xl font-medium">Event Rules</h1>
           <p className="text-gray-400 text-justify mt-3">{event?.rules}</p>
         </div>
         <div className="my-10 space-y-10 md:space-y-0 flex flex-col md:flex-row justify-between">

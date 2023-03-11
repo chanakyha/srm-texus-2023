@@ -10,7 +10,7 @@ import "swiper/css/autoplay";
 
 export default function Slider() {
 return (
-    <div className="carousel-container md:px-12 md:py-16 mx-auto flex justify-center items-center my-16">
+    <div className="md:px-12 mx-auto flex justify-center items-center">
     <Swiper
         className="flex items-center align-items justify-center bg-transparent md:rounded-md"
         modules={[Pagination, Scrollbar, A11y, Autoplay]}

@@ -58,7 +58,7 @@ color: #000;
 
 @layer components {
   .navButton {
-    @apply text-black capitalize tracking-widest font-sniglet text-sm dark:text-white cursor-pointer;
+    @apply text-black capitalize tracking-widest font-montserrat text-sm dark:text-white cursor-pointer;
   }
 }
 
