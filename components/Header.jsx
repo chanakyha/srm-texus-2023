@@ -1,6 +1,7 @@
 import { Drawer } from "antd";
 import { useRouter } from "next/router";
 import React, { useState, useRef, useEffect } from "react";
+import { useAuth } from "../backend/useAuth";
 
 const Header = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -13,18 +14,19 @@ const Header = () => {
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      navRef.current.classList.toggle('opacity-0')
+      navRef.current.classList.toggle("opacity-0");
+    }, 8500);
 
-    }, 8500)
-  
     return () => {
-        clearTimeout(timeout);
-    }
-  }, [])
-  
+      clearTimeout(timeout);
+    };
+  }, []);
 
   return (
-    <nav className="fixed w-full z-[999] top-0 opacity-0 transistion-all duration-300" ref={navRef}>
+    <nav
+      className="fixed w-full z-[999] top-0 opacity-0 transistion-all duration-300"
+      ref={navRef}
+    >
       <Drawer
         title={user ? user.displayName : "Contents"}
         style={{
