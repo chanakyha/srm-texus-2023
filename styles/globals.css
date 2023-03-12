@@ -208,7 +208,7 @@ h2 {
   z-index: 100;
   width: 400px;
   height: 100%;
-  background-image: url("../assets/images/eventcard.png");
+  background-image: url("https://i.ibb.co/vkmsdTJ/eventcard.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -244,13 +244,13 @@ h2 {
   color: #fff;
 }
 .container .card:hover .pic {
-  background-image: url("https://s3-alpha-sig.figma.com/img/1c09/6a6a/4df05d2406fe9666737cb6584a197244?Expires=1679270400&Signature=UP26usS~6DUXGJgv1-54UMalnXpxN7jpdgTuIY9DceHpMs3j1ltBadM1LfhSZ8oJcfq2m-yMVu~AJgEPK834HHKlHiYoZvuzQdgml4f8R~D-KNLCOrpk9kDHfLpIe-vgfUonjCI3v2PByUkoIo9rJPZwYE-LiGUVpXH98BMvyRjJBtGtEYK84IEprnuSFPXEWo41cH9jpuN8wYE0jOFbFpDhUfqKfJQLuILD3hpaHp3Nq9dOXKyenKve5UljCPjgHCTJSLMxRK3lV0FjFr-Q07XFLOX42AhF4pQe-Xplvhrf5lsvygUfmyVH0sWAQay7PC~62Fu24BsdXJlkiirEZA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4");
+  background-image: url("https://i.ibb.co/6rS8nRg/DSC-2357-01.jpg");
 }
 .container .card2:hover .pic {
-  background-image: url("https://s3-alpha-sig.figma.com/img/b728/1995/939bf076d7b9cfb21034c10e3a396918?Expires=1679270400&Signature=FsAtlAal04K4YzV5BRvUWLurv01JE8DEQExHGfIR-O2uDSQzlkkzK1SPBNwqBhd4Ix5XMnncUrcVPokILaNRmVwIMc4P-Fx0cqIINXbOu5SbOD7DIzqBb9WTs31tgQeraCalaCpP0ZkOetRyrpqrZVx5YveXVqarXBrlqUniwhN0FjzTDzWE7aYchyJqOvtRw-BevG~m9pVxy-3Y86DSx0OMZjO8LVVtBJYceYjsVNbKwvxnunL8cE2JY0KuJ--3b1Zy1L1w81bHNk1qRbLRe5VtLdgNCgLu3JQl9VW3Whkq7aCZGJFP40z57n2PUbg53H6M1kPDDQ4tpvxcBF-C6w__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4");
+  background-image: url("https://i.ibb.co/9nPtRVH/IMG-2814-01.jpg");
 }
 .container .card2 .pic {
-  background-image: url("../assets/images/eventcard.png");
+  background-image: url("https://i.ibb.co/vkmsdTJ/eventcard.png");
 }
 .container .card2 button {
   background-color: #2b26c3;
