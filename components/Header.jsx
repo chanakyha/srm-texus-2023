@@ -12,28 +12,31 @@ const Header = () => {
 
   const adminSignin = () => {
     console.log(user.uid);
-    if (user.uid === 'i7G3q5uCZZXLetZ8pUyPpD3rGpj1' || user.email === 'srmtexus2k23@gmail.com'){
-      router.replace('/admin')
+    if (
+      user.uid === "i7G3q5uCZZXLetZ8pUyPpD3rGpj1" ||
+      user.email === "srmtexus2k23@gmail.com"
+    ) {
+      router.replace("/admin");
     }
-  }
+  };
 
   const contents = ["events", "about", "schedule", "sponsors", "contact"];
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      navRef.current.classList.toggle('opacity-0')
+      navRef.current.classList.toggle("opacity-0");
+    }, 8500);
 
-    }, 8500)
-  
     return () => {
-        clearTimeout(timeout);
-    }
-  }, [])
-
-  
+      clearTimeout(timeout);
+    };
+  }, []);
 
   return (
-    <nav className="fixed w-full z-[999] top-0 opacity-0 transistion-all duration-300" ref={navRef}>
+    <nav
+      className="fixed w-full z-[999] top-0 opacity-0 transistion-all duration-300 border-b border-slate-200/20"
+      ref={navRef}
+    >
       <Drawer
         title={user ? user.displayName : "Contents"}
         style={{
@@ -41,22 +44,33 @@ const Header = () => {
         }}
         extra={
           <>
-          <div>
-            {user ?(<button onClick={onSignout}  className="navButton bg-gradient-to-r font-montserrat text-black from-[#FFEA2C] to-[#179EBB] px-4 py-2 active:scale-75 ease-out duration-100 rounded-lg font-semibold to-[#FF0000]">
-            View Dashboard
-          </button>) :
-          (<button onClick={onSignin}  className="navButton bg-gradient-to-r font-montserrat text-black from-[#FFEA2C] to-[#179EBB] px-4 py-2 active:scale-75 ease-out duration-100 rounded-lg font-semibold to-[#FF0000]">
-            Login
-          </button>)}
-          </div>
-          <div>
-            {user.email === 'srmtexus2k23@gmail.com' ? 
-            (<button onClick={adminSignin}  className="navButton bg-gradient-to-r font-montserrat text-black from-[#FFEA2C] to-[#179EBB] px-4 py-2 active:scale-75 ease-out duration-100 rounded-lg font-semibold to-[#FF0000]">
-            Admin
-            </button>)
-            : null
-            }
-          </div>
+            <div>
+              {user ? (
+                <button
+                  onClick={onSignout}
+                  className="navButton bg-gradient-to-r font-montserrat text-black from-[#FFEA2C] to-[#179EBB] px-4 py-2 active:scale-75 ease-out duration-100 rounded-lg font-semibold to-[#FF0000]"
+                >
+                  View Dashboard
+                </button>
+              ) : (
+                <button
+                  onClick={onSignin}
+                  className="navButton bg-gradient-to-r font-montserrat text-black from-[#FFEA2C] to-[#179EBB] px-4 py-2 active:scale-75 ease-out duration-100 rounded-lg font-semibold to-[#FF0000]"
+                >
+                  Login
+                </button>
+              )}
+            </div>
+            <div>
+              {user.email === "srmtexus2k23@gmail.com" ? (
+                <button
+                  onClick={adminSignin}
+                  className="navButton bg-gradient-to-r font-montserrat text-black from-[#FFEA2C] to-[#179EBB] px-4 py-2 active:scale-75 ease-out duration-100 rounded-lg font-semibold to-[#FF0000]"
+                >
+                  Admin
+                </button>
+              ) : null}
+            </div>
           </>
         }
         closeIcon={
@@ -122,21 +136,31 @@ const Header = () => {
               </p>
             );
           })}
-          {user ?(<button onClick={onSignout}  className="navButton bg-gradient-to-r font-montserrat text-black from-[#FFEA2C] to-[#179EBB] px-4 py-2 active:scale-75 ease-out duration-100 rounded-lg font-semibold to-[#FF0000]">
-            View Dashboard
-          </button>) :
-          (<button onClick={onSignin}  className="navButton bg-gradient-to-r font-montserrat text-black from-[#FFEA2C] to-[#179EBB] px-4 py-2 active:scale-75 ease-out duration-100 rounded-lg font-semibold to-[#FF0000]">
-            Login
-          </button>)}
+          {user ? (
+            <button
+              onClick={onSignout}
+              className="navButton bg-gradient-to-r font-montserrat text-black from-[#FFEA2C] to-[#179EBB] px-4 py-2 active:scale-75 ease-out duration-100 rounded-lg font-semibold to-[#FF0000]"
+            >
+              View Dashboard
+            </button>
+          ) : (
+            <button
+              onClick={onSignin}
+              className="navButton bg-gradient-to-r font-montserrat text-black from-[#FFEA2C] to-[#179EBB] px-4 py-2 active:scale-75 ease-out duration-100 rounded-lg font-semibold to-[#FF0000]"
+            >
+              Login
+            </button>
+          )}
           <div>
-            {user.email === 'srmtexus2k23@gmail.com' ? 
-            (<button onClick={adminSignin}  className="navButton bg-gradient-to-r font-montserrat text-black from-[#FFEA2C] to-[#179EBB] px-4 py-2 active:scale-75 ease-out duration-100 rounded-lg font-semibold to-[#FF0000]">
-            Admin
-            </button>)
-            : null
-            }
+            {user.email === "srmtexus2k23@gmail.com" ? (
+              <button
+                onClick={adminSignin}
+                className="navButton bg-gradient-to-r font-montserrat text-black from-[#FFEA2C] to-[#179EBB] px-4 py-2 active:scale-75 ease-out duration-100 rounded-lg font-semibold to-[#FF0000]"
+              >
+                Admin
+              </button>
+            ) : null}
           </div>
-          
         </div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
