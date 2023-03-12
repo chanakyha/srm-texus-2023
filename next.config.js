@@ -14,6 +14,11 @@ module.exports = {
         hostname: 'res.cloudinary.com',
         pathname: '/**'
       },
+      {
+        protocol: 'https',
+        hostname: 'i.ibb.co',
+        pathname: '/**'
+      },
     ],
   },
 }
