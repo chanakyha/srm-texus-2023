@@ -9,7 +9,7 @@ const EventList = () => {
 
   return (
     <section className="w-full h-full bg-black font-sniglet mt-20 text-white">
-    <div className="w-full max-w-6xl mx-auto bg-[url('https://i.ibb.co/mvthgPH/TEXUE-18-PICS-4.jpg')] lg:rounded-md bg-bottom bg-cover bg-no-repeat h-96 ">
+    <div className="w-full max-w-6xl mx-auto bg-[url('https://i.ibb.co/9nPtRVH/IMG-2814-01.jpg')] lg:rounded-md bg-center bg-cover bg-no-repeat h-[500px] ">
     </div>
     <div className='p-4 md:p-16'>
       <div>

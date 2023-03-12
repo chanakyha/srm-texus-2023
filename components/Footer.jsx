@@ -18,7 +18,7 @@ function Footer() {
                         <Image src={SRMlogo} alt="logo" width={100} height={"100%"} />
                     </Link>
                 </div>
-                <div className="grid grid-cols-1 w-full text-center gap-5 items-center md:grid-cols-2 lg:grid-cols-5">
+                <div className="grid grid-cols-1 w-full text-center gap-5 items-center md:grid-cols-2 lg:grid-cols-4">
                     <Link href="/#events" className="text-sm font-semibold">Events</Link >
                     <Link href="/about" className="text-sm font-semibold">About</Link >
                     {/* <Link href="#" className="text-sm font-semibold">Schedule</Link > */}
