@@ -182,7 +182,7 @@ h2 {
   z-index: 100;
   width: 400px;
   height: 100%;
-  background-image: url("../assets/images/eventcard.png");
+  background-image: url("https://i.ibb.co/vkmsdTJ/eventcard.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -225,7 +225,7 @@ h2 {
 
 }
 .container .card2 .pic {
-  background-image: url("../assets/images/eventcard.png");
+  background-image: url("https://i.ibb.co/vkmsdTJ/eventcard.png");
 }
 .container .card2 button {
   background-color: #2b26c3;
