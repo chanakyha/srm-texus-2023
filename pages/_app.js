@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }) {
       }}
     >
       <Header />
-      <div className="font-montserrat">
+      <div className="font-montserrat mt-28">
         <Component {...pageProps} />
       </div>
       <Footer />
