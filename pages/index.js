@@ -3,6 +3,7 @@ import Landing from "../components/Landing";
 import Tagline from "../components/Tagline";
 import EventDetails from "../components/EventDetails";
 import Carousel from "../components/Carousel";
+import Sponsors from "../components/Sponsors";
 
 const Home = () => {
   return (
@@ -16,6 +17,7 @@ const Home = () => {
         <Carousel />
         <Tagline />
         <EventDetails />
+        <Sponsors/>
       </main>
     </div>
   );
