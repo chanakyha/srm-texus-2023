@@ -29,7 +29,7 @@ const Header = () => {
       <Drawer
         title={user ? user.displayName : "Contents"}
         style={{
-          fontFamily: "Montserrat, cursive",
+          fontFamily: "Montserrat",
         }}
         extra={
           <div>
@@ -73,7 +73,7 @@ const Header = () => {
                 key={key}
                 className="navButton capitalize"
                 onClick={() => {
-                  router.push(`/${content}`);
+                  router.push(`/${content === "sponsors" ? "#sponsors" : `${content}`}`);
                   setOpenDrawer(!openDrawer);
                 }}
               >
@@ -95,8 +95,7 @@ const Header = () => {
           {contents.map((content, key) => {
             return (
               <p
-                onClick={() => router.push(`/${content}`)}
-                key={key}
+              onClick={() => router.push(`/${content === "sponsors" ? "#sponsors" : `${content === "events" ? "#events" : `${content}`}`}`)}                key={key}
                 className="navButton font-montserrat"
               >
                 {content}

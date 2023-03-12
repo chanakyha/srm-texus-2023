@@ -11,7 +11,12 @@ module.exports = {
       },
       {
         protocol: "https",
-        hostname: "lh3.googleusercontent.com",
+        hostname: "res.cloudinary.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "i.ibb.co",
         pathname: "/**",
       },
     ],
