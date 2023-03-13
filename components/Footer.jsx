@@ -5,9 +5,8 @@ import SRMlogo from "../assets/images/SRMlogo.png";
 import Image from "next/image";
 
 function Footer() {
-  const contents = ["EVENTS", "ABOUT", "SCHEDULE", "SPONSORS", "CONTACT"];
   return (
-    <div className="h-48">
+    <div className="h-fit">
       <footer className="w-full font-montserrat text-white bg-[url('../assets/images/footer.png')] bg-top bg-fill bg-no-repeat">
         <div className="mx-auto max-w-screen-xl py-8 px-4">
           <div className="md:flex md:justify-between">
@@ -18,24 +17,24 @@ function Footer() {
               </Link>
             </div>
             <div className="grid grid-cols-1 w-full text-center gap-5 items-center md:grid-cols-2 lg:grid-cols-5">
-              <Link href="#" className="text-sm font-semibold">
+              <Link href="/#events" className="text-sm font-semibold">
                 Events
               </Link>
-              <Link href="#" className="text-sm font-semibold">
+              <Link href="/about" className="text-sm font-semibold">
                 About
               </Link>
-              <Link href="#" className="text-sm font-semibold">
+              <Link href="/schedule" className="text-sm font-semibold">
                 Schedule
               </Link>
-              <Link href="#" className="text-sm font-semibold">
+              <Link href="/#sponsors" className="text-sm font-semibold">
                 Sponsors
               </Link>
-              <Link href="#" className="text-sm font-semibold">
+              <Link href="/contact" className="text-sm font-semibold">
                 Contact
               </Link>
             </div>
           </div>
-          <hr className="my-6 border-[#777a85] sm:mx-auto " />
+          <hr className="my-6 border-b border-slate-200/20 sm:mx-auto"/>
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-center">
             <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-center">
               <Link

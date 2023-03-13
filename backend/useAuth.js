@@ -68,8 +68,9 @@ const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={{ user, onSignin, onSignout, api }}>
-      {contextHolder}
+      
       {children}
+      {contextHolder}
     </AuthContext.Provider>
   );
 };

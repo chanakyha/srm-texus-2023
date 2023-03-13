@@ -20,8 +20,8 @@ return (
         delay: 2000,
         disableOnInteraction: true,
         }}
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
+        // onSlideChange={() => console.log("slide change")}
+        // onSwiper={(swiper) => console.log(swiper)}
     >
         <SwiperSlide className="flex justify-center items-center bg-transparent">
         <div className="img-container flex items-center justify-center h-56 md:h-[36rem] bg-transparent">
