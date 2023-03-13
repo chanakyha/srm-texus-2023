@@ -72,10 +72,14 @@ body {
 }
 
 * {
+  scroll-behavior: smooth !important;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 i {
   opacity: 0;
   font-size: 18px;
