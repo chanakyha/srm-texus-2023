@@ -46,7 +46,7 @@ color: #000;
 
 @layer components {
   .navButton {
-    @apply text-black capitalize tracking-widest font-montserrat text-sm dark:text-white cursor-pointer;
+    @apply  capitalize tracking-widest font-montserrat text-sm text-white cursor-pointer;
   }
 }
 

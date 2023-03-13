@@ -83,7 +83,7 @@ const Header = () => {
           })}
         </div>
       </Drawer>
-      <div className="flex bg-white justify-between duration-1000 transition-all ease-out py-5 px-10 items-center dark:bg-black">
+      <div className="flex justify-between duration-1000 transition-all ease-out py-5 px-10 items-center bg-black">
         <h1
           onClick={() => router.push("/")}
           className="navButton font-sniglet tracking-[1rem] text-xl"
