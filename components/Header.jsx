@@ -25,7 +25,7 @@ const Header = () => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       navRef.current.classList.toggle("opacity-0");
-    }, 8500);
+    }, 100);
 
     return () => {
       clearTimeout(timeout);

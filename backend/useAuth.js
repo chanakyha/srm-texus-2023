@@ -43,7 +43,7 @@ const AuthProvider = ({ children }) => {
             authUid: user.user.uid,
           },
           { merge: true }
-        ).then(async () => {
+        ).then(async () => { 
           const docSnap = await getDoc(doc(db, "students", user.user.uid));
           if (docSnap?.data()?.texusId) {
             console.log("User already exists");
