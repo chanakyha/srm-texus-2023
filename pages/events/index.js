@@ -1,14 +1,24 @@
-import React from "react";
 import { technicalEvents } from "../../assets/events";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const EventList = () => {
   const router = useRouter();
   const { type } = router.query;
 
   return (
-    <section className="w-full h-full bg-black mt-20 text-white">
-      <div className="w-full max-w-6xl mx-auto bg-[url('https://i.ibb.co/9nPtRVH/IMG-2814-01.jpg')] lg:rounded-md bg-center bg-cover bg-no-repeat h-[500px] "></div>
+    <section className="w-full h-full bg-black text-white">
+      <Image
+        width={10000}
+        height={10000}
+        src={
+          type === "technical"
+            ? "https://i.ibb.co/6rS8nRg/DSC-2357-01.jpg"
+            : "https://i.ibb.co/9nPtRVH/IMG-2814-01.jpg"
+        }
+        className="w-full max-w-6xl mx-auto lg:rounded-md object-center object-cover bg-no-repeat h-[500px] "
+      />
+
       <div className="p-4 md:p-16">
         <div>
           <h1 className="text-3xl my-8 max-w-6xl lg:mx-auto">
