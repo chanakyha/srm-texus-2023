@@ -24,22 +24,34 @@ const Header = () => {
 
   return (
     <nav
-      className="fixed w-full z-[999] top-0 opacity-0 transistion-all duration-300"
+      className="fixed w-full z-[999] top-0 opacity-0 transistion-all duration-300 border-b border-slate-200/20"
       ref={navRef}
     >
       <Drawer
         title={user ? user.displayName : "Contents"}
         style={{
-          fontFamily: "Montserrat, cursive",
+          fontFamily: "Montserrat",
         }}
         extra={
-          <div>
-            {user ? (<button onClick={onSignout} className="text-white bg-red-500 px-3 py-1 rounded-lg">
-              View Dashboard
-            </button>) : (<button onClick={onSignin} className="text-white bg-red-500 px-3 py-1 rounded-lg">
-              Login
-            </button>)}
-          </div>
+          <>
+            <div>
+              {user ? (
+                <button
+                  onClick={onSignout}
+                  className="navButton bg-gradient-to-r font-montserrat text-black from-[#FFEA2C] to-[#179EBB] px-4 py-2 active:scale-75 ease-out duration-100 rounded-lg font-semibold to-[#FF0000]"
+                >
+                  View Dashboard
+                </button>
+              ) : (
+                <button
+                  onClick={onSignin}
+                  className="navButton bg-gradient-to-r font-montserrat text-black from-[#FFEA2C] to-[#179EBB] px-4 py-2 active:scale-75 ease-out duration-100 rounded-lg font-semibold to-[#FF0000]"
+                >
+                  Login
+                </button>
+              )}
+            </div>
+          </>
         }
         closeIcon={
           <svg
@@ -51,8 +63,8 @@ const Header = () => {
             className="w-6 h-6"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="M6 18L18 6M6 6l12 12"
             />
           </svg>
@@ -74,7 +86,9 @@ const Header = () => {
                 key={key}
                 className="navButton capitalize"
                 onClick={() => {
-                  router.push(`/${content}`);
+                  router.push(
+                    `/${content === "sponsors" ? "#sponsors" : `${content}`}`
+                  );
                   setOpenDrawer(!openDrawer);
                 }}
               >
@@ -96,7 +110,15 @@ const Header = () => {
           {contents.map((content, key) => {
             return (
               <p
-                onClick={() => router.push(`/${content}`)}
+                onClick={() =>
+                  router.push(
+                    `/${
+                      content === "sponsors"
+                        ? "#sponsors"
+                        : `${content === "events" ? "#events" : `${content}`}`
+                    }`
+                  )
+                }
                 key={key}
                 className="navButton font-montserrat"
               >
@@ -104,12 +126,21 @@ const Header = () => {
               </p>
             );
           })}
-          {user ?(<button onClick={onSignout}  className="navButton bg-gradient-to-r font-montserrat text-black from-[#FFEA2C] to-[#179EBB] px-4 py-2 active:scale-75 ease-out duration-100 rounded-lg font-semibold to-[#FF0000]">
-            View Dashboard
-          </button>) : (<button onClick={onSignin}  className="navButton bg-gradient-to-r font-montserrat text-black from-[#FFEA2C] to-[#179EBB] px-4 py-2 active:scale-75 ease-out duration-100 rounded-lg font-semibold to-[#FF0000]">
-            Login
-          </button>)}
-          
+          {user ? (
+            <button
+              onClick={onSignout}
+              className="navButton bg-gradient-to-r font-montserrat text-black from-[#FFEA2C] to-[#179EBB] px-4 py-2 active:scale-75 ease-out duration-100 rounded-lg font-semibold to-[#FF0000]"
+            >
+              View Dashboard
+            </button>
+          ) : (
+            <button
+              onClick={onSignin}
+              className="navButton bg-gradient-to-r font-montserrat text-black from-[#FFEA2C] to-[#179EBB] px-4 py-2 active:scale-75 ease-out duration-100 rounded-lg font-semibold to-[#FF0000]"
+            >
+              Login
+            </button>
+          )}
         </div>
         <svg
           xmlns="http://www.w3.org/2000/svg"

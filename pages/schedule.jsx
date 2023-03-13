@@ -1,3 +1,4 @@
+import React from "react";
 import React, { useCallback, useRef, useState } from "react";
 import { technicalEvents } from "../assets/events";
 import Link from "next/link";

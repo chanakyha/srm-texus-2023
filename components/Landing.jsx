@@ -6,7 +6,7 @@ const Landing = () => {
 
     return (
         <section className="w-full animate-maxWidth relative h-96 md:min-h-screen overflow-clip p-4 bg-black mx-auto">
-        <div className="bg-contain animate-none lg:animate-infinityAnimation w-full h-full bg-[url('../assets/images/InfinityWhite.png')] bg-no-repeat bg-center flex justify-center items-center">
+        <div className="bg-contain animate-none lg:animate-infinityAnimation w-full h-full bg-[url('https://i.ibb.co/xXzVsWm/Infinitywhite.png')] bg-no-repeat bg-center flex justify-center items-center">
             <video className='w-[3000px] mix-blend-multiply h-full bg-black' autoplay={"autoplay"} muted loop>
                 <source src={"https://res.cloudinary.com/dwncfhjpd/video/upload/v1678438021/samples/bgvideo1_mouerm.mp4"} type="video/mp4"/>
                 {/* <source src={"https://res.cloudinary.com/dwncfhjpd/video/upload/v1678348481/samples/bgvideo_aewv6w.mp4"} type="video/mp4"/> */}
