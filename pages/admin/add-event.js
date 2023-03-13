@@ -15,6 +15,7 @@ const AddEvent = () => {
   const [prizes, setPrizes] = useState(1);
   const [studentCount, setStudentCount] = useState(1);
   const [staffCount, setStaffCount] = useState(1);
+  const [groupType, setGroupType] = useState("fixed");
 
   const getEventCount = async () => {
     const NoOfEvents = await getCountFromServer(collection(db, "events"));
@@ -23,63 +24,12 @@ const AddEvent = () => {
 
   var eventId = `TxEV${23000 + eventCount + 1}`;
   const formRef = useRef(null);
+  const onChange = (checked) => {
+    setGroupType(checked ? "notFixed" : "fixed");
+  };
 
-  // const getRules = () => {
-  //   let arr = [];
-  //   for (let i = 9; i < 9 + rules; i++) {
-  //     arr.push(formRef.current[i].value);
-  //   }
-
-  //   return arr;
-  // };
-  // const getPrizes = () => {
-  //   let arr = [];
-  //   for (let i = 9 + rules; i < 9 + rules + prizes; i++) {
-  //     arr.push(formRef.current[i].value);
-  //   }
-
-  //   return arr;
-  // };
-  // const getStudentCo = () => {
-  //   let arr = [];
-  //   for (
-  //     let i = 9 + rules + prizes;
-  //     i < 9 + rules + prizes + studentCount;
-  //     i += 1
-  //   ) {
-  //     arr.push({
-  //       name: formRef.current[i].value,
-  //       contact: formRef.current[i + 1].value,
-  //     });
-  //   }
-
-  //   return arr;
-  // };
-  // const getStaffCo = () => {
-  //   let arr = [];
-  //   for (
-  //     let i = 9 + rules + prizes + studentCount;
-  //     i < 9 + rules + prizes + studentCount + staffCount;
-  //     i + 1
-  //   ) {
-  //     arr.push({
-  //       name: formRef.current[i].value,
-  //       contact: formRef.current[i + 1].value,
-  //     });
-  //   }
-
-  //   return arr;
-  // };
   const addEvent = (e) => {
     e.preventDefault();
-
-    // const [name, desc, organised, banner, date, type, limit, size, venue] =
-    //   formRef.current;
-
-    // formRef.current.map((item) => {
-    //   console.log(item.value);
-    // });
-
     let details = [];
 
     for (let i = 0; i < 10 + rules + prizes + studentCount + staffCount; i++) {
@@ -106,7 +56,9 @@ const AddEvent = () => {
         10 + rules + prizes + studentCount,
         10 + rules + prizes + studentCount + staffCount
       ),
+      groupType: groupType,
     };
+    console.log(structuredDetails);
 
     setDoc(doc(db, "events", eventId), structuredDetails, { merge: true }).then(
       () => {
@@ -320,10 +272,14 @@ const AddEvent = () => {
                   );
                 })}
             </div>
+            <div className="flex justify-between w-full">
+              <span>Min-Max Group</span>
+              <Switch onChange={onChange} />
+            </div>
           </div>
 
           <button className="bg-gradient-to-r from-[#FFEA2C] via-[#FF7A5D] to-[#FF0000] w-full max-w-2xl outline-none border-transparent my-2 h-14 pl-[15px] text-black font-bold rounded-md ">
-            Register
+            Add Event
           </button>
         </div>
       </form>

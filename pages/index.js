@@ -17,6 +17,12 @@ function Admin() {
         >
           Add Events
         </button>
+        <button 
+        className="button"
+        onClick={() => router.push("/admin/add-sponsor")}
+        >
+          Add Sponsors
+        </button>
         <button className="button">View Registrations</button>
         <button className="button" onClick={onSignout}>Log out</button>
         </>
