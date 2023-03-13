@@ -22,7 +22,7 @@
   animation-fill-mode: forwards;
   animation-iteration-count: 1;
 }
-.textSpan2{
+.textSpan2 {
   animation-delay: 7.8s;
 }
 .textSpan:nth-child(1) {
@@ -32,9 +32,9 @@
   animation-delay: 6.4s;
 }
 .textSpan:nth-child(3) {
-animation-delay: 6.8s;
-color: #000;
-/* visibility: hidden; */
+  animation-delay: 6.8s;
+  color: #000;
+  /* visibility: hidden; */
 }
 .textSpan:nth-child(4) {
   animation-delay: 7.2s;
@@ -59,6 +59,10 @@ color: #000;
 @layer components {
   .navButton {
     @apply text-black capitalize tracking-widest font-montserrat text-sm dark:text-white cursor-pointer;
+  }
+
+  .button {
+    @apply text-black rounded-lg px-4 py-3 font-bold bg-gradient-to-r from-[#FFEA2C] via-[#FF7A5D] to-[#FF0000]  outline-none border-transparent;
   }
 }
 
@@ -166,7 +170,7 @@ h2 {
     font-size: 20px;
   }
 
-  .textSpan2{
+  .textSpan2 {
     animation-delay: 1.8s;
   }
   .textSpan:nth-child(1) {
@@ -176,9 +180,9 @@ h2 {
     animation-delay: 0.4s;
   }
   .textSpan:nth-child(3) {
-  animation-delay: 0.8s;
-  color: #000;
-  /* visibility: hidden; */
+    animation-delay: 0.8s;
+    color: #000;
+    /* visibility: hidden; */
   }
   .textSpan:nth-child(4) {
     animation-delay: 1.2s;
