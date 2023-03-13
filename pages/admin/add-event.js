@@ -5,6 +5,7 @@ import {
   getCountFromServer,
 } from "firebase/firestore";
 import { useEffect, useRef, useState } from "react";
+import { Switch } from 'antd';
 import { db } from "../../backend/firebase";
 
 const AddEvent = () => {
@@ -89,20 +90,21 @@ const AddEvent = () => {
       desc: details[1],
       organised: details[2],
       banner: details[3],
-      date: details[4],
-      type: details[5],
-      limit: details[6],
-      size: details[7],
-      venue: details[8],
-      rules: details.slice(9, 9 + rules),
-      prizes: details.slice(9 + rules, 9 + rules + prizes),
+      fees: details[4],
+      date: details[5],
+      type: details[6],
+      limit: details[7],
+      size: details[8],
+      venue: details[9],
+      rules: details.slice(10, 10 + rules),
+      prizes: details.slice(10 + rules, 10 + rules + prizes),
       studentCo: details.slice(
-        9 + rules + prizes,
-        9 + rules + prizes + studentCount
+        10 + rules + prizes,
+        10 + rules + prizes + studentCount
       ),
       staffCo: details.slice(
-        9 + rules + prizes + studentCount,
-        9 + rules + prizes + studentCount + staffCount
+        10 + rules + prizes + studentCount,
+        10 + rules + prizes + studentCount + staffCount
       ),
     };
 
@@ -164,16 +166,21 @@ const AddEvent = () => {
           />
           <input
             className=" w-full p-3 max-w-2xl rounded-md placeholder-[#858585] bg-[#222222] focus:outline-none focus:ring-2 focus:ring-[#858585] focus:ring-opacity-50 focus:placeholder-slate-300 focus:border-transparent"
+            type="text"
+            placeholder="Entry Fees"
+          />
+          <input
+            className=" w-full p-3 max-w-2xl rounded-md placeholder-[#858585] bg-[#222222] focus:outline-none focus:ring-2 focus:ring-[#858585] focus:ring-opacity-50 focus:placeholder-slate-300 focus:border-transparent"
             type="datetime-local"
             placeholder="Date Time"
           />
           <select className=" w-full p-3 max-w-2xl rounded-md placeholder-[#858585] bg-[#222222] focus:outline-none focus:ring-2 focus:ring-[#858585] focus:ring-opacity-50 focus:placeholder-slate-300 focus:border-transparent">
-            <option disabled value="">
+            <option disabled hidden value="">
               Select Event Type
             </option>
-            <option value="Technical">Technical</option>
-            <option value="Non-Technical">Non-Technical</option>
-            <option value="Workshop">Workshop</option>
+            <option value="technical">Technical</option>
+            <option value="non technical">Non-Technical</option>
+            <option value="workshop">Workshop</option>
           </select>
 
           <input
@@ -274,9 +281,9 @@ const AddEvent = () => {
                       <input
                         className="w-full flex items-center p-3 max-w-2xl rounded-md placeholder-[#858585] bg-[#222222] focus:outline-none focus:ring-2 focus:ring-[#858585] focus:ring-opacity-50 focus:placeholder-slate-300 focus:border-transparent"
                         type="text"
-                        placeholder={`Staff ${
+                        placeholder={`Student ${
                           index + 1
-                        } • (Staff, Contact Number)`}
+                        } • (Student, Contact Number)`}
                       />
                     </div>
                   );

@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { useEffect } from "react";
 import { createContext } from "react";
-import { doc, setDoc, getDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
 import {
   GoogleAuthProvider,
@@ -34,28 +33,17 @@ const AuthProvider = ({ children }) => {
   const onSignin = () => {
     signInWithPopup(auth, googleProvider)
       .then((user) => {
-        setDoc(
-          doc(db, "students", user.user.uid),
-          {
-            authName: user.user.displayName,
-            authEmail: user.user.email,
-            authPhoto: user.user.photoURL,
-            authUid: user.user.uid,
-          },
-          { merge: true }
-        ).then(async () => { 
-          const docSnap = await getDoc(doc(db, "students", user.user.uid));
-          if (docSnap?.data()?.texusId) {
-            console.log("User already exists");
-          } else {
-            router.replace("/register");
-          }
-        });
-        console.log("Logged in Successfully");
-      })
-      .catch(console.warn);
+        setUser(user);
+        if (
+          user.uid === "i7G3q5uCZZXLetZ8pUyPpD3rGpj1" ||
+          user.email === "srmtexus2k23@gmail.com"
+        ) {
+          router.replace("/admin");
+        }
+      }).catch((error) => {
+        console.log(error);
+      });
   };
-
   const onSignout = () => {
     signOut(auth)
       .then(() => {
