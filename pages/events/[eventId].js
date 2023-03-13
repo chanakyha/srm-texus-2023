@@ -6,6 +6,7 @@ import { useAuth } from "../../backend/useAuth";
 import { db } from "../../backend/firebase";
 import Error from "next/error";
 import { useEffect, useState } from "react";
+import { Tooltip, Modal } from 'antd';
 
 const EventDescription = () => {
 
@@ -45,12 +46,34 @@ const EventDescription = () => {
         placement: "bottomRight"
       })
     }
+    else {
+      if (event?.size > 1){
+        showModal();
+      }
+      else {
+        console.log("can be added to cart");
+      }
+    }
   };
 
-  console.log()
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <div className="min-h-screen max-w-6xl mx-auto w-full py-[100px bg-black font-montserrat">
+      <Modal title="Add other Team Members" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+      </Modal>
       <Image
       width={100}
       height={100}
@@ -77,12 +100,14 @@ const EventDescription = () => {
               By {event?.organised}
             </p>
           </div>
+          <Tooltip title={`${event?.limit} registraions left`} placement="bottom" color={`${event?.limit}` < 10 ? '#990F02' : '#222222'}>
           <button
             onClick={addToCart}
             className="bg-gray-600/50 hover:bg-gray-600/60 transition-all duration-300 px-4 py-2 rounded-lg text-white"
           >
             Add Ticket to Cart
           </button>
+          </Tooltip>
         </div>
         <div className="flex flex-col md:flex-row space-y-1 md:space-y-0 justify-between my-10">
           <div className="flex items-center space-x-2">
@@ -140,6 +165,23 @@ const EventDescription = () => {
               />
             </svg>
             <p className="text-white font-medium text-sm md:text-lg">{event?.venue}</p>
+          </div>
+          <div className="flex items-center space-x-2">
+          <svg
+           xmlns="http://www.w3.org/2000/svg" 
+           fill="none" 
+           viewBox="0 0 24 24" 
+           stroke-width="1.5" 
+           stroke="currentColor" 
+           class="w-6 h-6"
+          >
+            <path
+             stroke-linecap="round" 
+             stroke-linejoin="round" 
+             d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z" 
+             />
+          </svg>
+          <p className="text-white font-medium text-sm md:text-lg">Team Size: {event?.size}</p>
           </div>
         </div>
         <div className="my-10">
