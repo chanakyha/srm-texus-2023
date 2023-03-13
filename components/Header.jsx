@@ -10,16 +10,6 @@ const Header = () => {
 
   const { user, onSignin, onSignout } = useAuth();
 
-  const adminSignin = () => {
-    console.log(user.uid);
-    if (
-      user.uid === "i7G3q5uCZZXLetZ8pUyPpD3rGpj1" ||
-      user.email === "srmtexus2k23@gmail.com"
-    ) {
-      router.replace("/admin");
-    }
-  };
-
   const contents = ["events", "about", "schedule", "sponsors", "contact"];
 
   useEffect(() => {
@@ -61,16 +51,6 @@ const Header = () => {
                 </button>
               )}
             </div>
-            <div>
-              {user.email === "srmtexus2k23@gmail.com" ? (
-                <button
-                  onClick={adminSignin}
-                  className="navButton bg-gradient-to-r font-montserrat text-black from-[#FFEA2C] to-[#179EBB] px-4 py-2 active:scale-75 ease-out duration-100 rounded-lg font-semibold to-[#FF0000]"
-                >
-                  Admin
-                </button>
-              ) : null}
-            </div>
           </>
         }
         closeIcon={
@@ -106,7 +86,9 @@ const Header = () => {
                 key={key}
                 className="navButton capitalize"
                 onClick={() => {
-                  router.push(`/${content === "sponsors" ? "#sponsors" : `${content}`}`);
+                  router.push(
+                    `/${content === "sponsors" ? "#sponsors" : `${content}`}`
+                  );
                   setOpenDrawer(!openDrawer);
                 }}
               >
@@ -128,7 +110,16 @@ const Header = () => {
           {contents.map((content, key) => {
             return (
               <p
-              onClick={() => router.push(`/${content === "sponsors" ? "#sponsors" : `${content === "events" ? "#events" : `${content}`}`}`)}                key={key}
+                onClick={() =>
+                  router.push(
+                    `/${
+                      content === "sponsors"
+                        ? "#sponsors"
+                        : `${content === "events" ? "#events" : `${content}`}`
+                    }`
+                  )
+                }
+                key={key}
                 className="navButton font-montserrat"
               >
                 {content}
@@ -150,16 +141,6 @@ const Header = () => {
               Login
             </button>
           )}
-          <div>
-            {user.email === "srmtexus2k23@gmail.com" ? (
-              <button
-                onClick={adminSignin}
-                className="navButton bg-gradient-to-r font-montserrat text-black from-[#FFEA2C] to-[#179EBB] px-4 py-2 active:scale-75 ease-out duration-100 rounded-lg font-semibold to-[#FF0000]"
-              >
-                Admin
-              </button>
-            ) : null}
-          </div>
         </div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
