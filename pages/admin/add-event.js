@@ -5,7 +5,6 @@ import {
   getCountFromServer,
 } from "firebase/firestore";
 import { useEffect, useRef, useState } from "react";
-import { Switch } from 'antd';
 import { db } from "../../backend/firebase";
 
 const AddEvent = () => {
@@ -15,7 +14,6 @@ const AddEvent = () => {
   const [prizes, setPrizes] = useState(1);
   const [studentCount, setStudentCount] = useState(1);
   const [staffCount, setStaffCount] = useState(1);
-  const [groupType, setGroupType] = useState("fixed");
 
   const getEventCount = async () => {
     const NoOfEvents = await getCountFromServer(collection(db, "events"));
@@ -24,39 +22,37 @@ const AddEvent = () => {
 
   var eventId = `TxEV${23000 + eventCount + 1}`;
   const formRef = useRef(null);
-  const onChange = (checked) => {
-    setGroupType(checked ? "notFixed" : "fixed");
-  };
 
   const addEvent = (e) => {
     e.preventDefault();
     let details = [];
 
-    for (let i = 0; i < 10 + rules + prizes + studentCount + staffCount; i++) {
+    for (let i = 0; i < 11 + rules + prizes + studentCount + staffCount; i++) {
       details.push(formRef.current[i].value);
     }
+    
     let structuredDetails = {
       name: details[0],
       desc: details[1],
       organised: details[2],
       banner: details[3],
-      fees: details[4],
+      fees: Number(details[4]),
       date: details[5],
       type: details[6],
-      limit: details[7],
-      size: details[8],
-      venue: details[9],
-      rules: details.slice(10, 10 + rules),
-      prizes: details.slice(10 + rules, 10 + rules + prizes),
+      limit: Number(details[7]),
+      venue: details[8],
+      min: Number(details[9]),
+      max: Number(details[10]),
+      rules: details.slice(11, 11 + rules),
+      prizes: details.slice(11 + rules, 11 + rules + prizes),
       studentCo: details.slice(
-        10 + rules + prizes,
-        10 + rules + prizes + studentCount
+        11 + rules + prizes,
+        11 + rules + prizes + studentCount
       ),
       staffCo: details.slice(
-        10 + rules + prizes + studentCount,
-        10 + rules + prizes + studentCount + staffCount
+        11 + rules + prizes + studentCount,
+        11 + rules + prizes + studentCount + staffCount
       ),
-      groupType: groupType,
     };
     console.log(structuredDetails);
 
@@ -118,7 +114,7 @@ const AddEvent = () => {
           />
           <input
             className=" w-full p-3 max-w-2xl rounded-md placeholder-[#858585] bg-[#222222] focus:outline-none focus:ring-2 focus:ring-[#858585] focus:ring-opacity-50 focus:placeholder-slate-300 focus:border-transparent"
-            type="text"
+            type="number"
             placeholder="Entry Fees"
           />
           <input
@@ -140,16 +136,26 @@ const AddEvent = () => {
             type="number"
             placeholder="Limit"
           />
-          <div className="grid lg:grid-cols-2 gap-3">
-            <input
-              className=" w-full max-w-2xl p-3 rounded-md placeholder-[#858585] bg-[#222222] outline-none"
-              type="number"
-              placeholder="Max Team Size"
-            />
+          {/* <input
+            className=" w-full p-3 max-w-2xl rounded-md placeholder-[#858585] bg-[#222222] focus:outline-none focus:ring-2 focus:ring-[#858585] focus:ring-opacity-50 focus:placeholder-slate-300 focus:border-transparent"
+            type="number"
+            placeholder="Max Team Size"
+          /> */}
             <input
               className=" w-full max-w-2xl p-3 rounded-md bg-[#222222] placeholder-[#858585] focus:outline-none focus:ring-2 focus:ring-[#858585] focus:ring-opacity-50 focus:placeholder-slate-300 focus:border-transparent"
               type="text"
               placeholder="Venue"
+            />
+          <div className="grid lg:grid-cols-2 gap-3">
+            <input
+              className=" w-full max-w-2xl p-3 rounded-md placeholder-[#858585] bg-[#222222] outline-none"
+              type="number"
+              placeholder="Min"
+            />
+            <input
+              className=" w-full max-w-2xl p-3 rounded-md bg-[#222222] placeholder-[#858585] focus:outline-none focus:ring-2 focus:ring-[#858585] focus:ring-opacity-50 focus:placeholder-slate-300 focus:border-transparent"
+              type="number"
+              placeholder="Max"
             />
           </div>
           <div className="space-y-2">
@@ -271,10 +277,6 @@ const AddEvent = () => {
                     </div>
                   );
                 })}
-            </div>
-            <div className="flex justify-between w-full">
-              <span>Min-Max Group</span>
-              <Switch onChange={onChange} />
             </div>
           </div>
 
