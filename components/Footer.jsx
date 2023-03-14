@@ -7,7 +7,7 @@ import Image from "next/image";
 function Footer() {
   const contents = ["EVENTS", "ABOUT", "SCHEDULE", "SPONSORS", "CONTACT"];
   return (
-    <div className="h-48">
+    <div className="h-fit">
       <footer className="w-full font-montserrat text-white bg-[url('../assets/images/footer.png')] bg-top bg-fill bg-no-repeat">
         <div className="mx-auto max-w-screen-xl py-8 px-4">
           <div className="md:flex md:justify-between">
