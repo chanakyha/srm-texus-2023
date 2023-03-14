@@ -12,6 +12,7 @@ import { async } from "@firebase/util";
 
 const EventDescription = () => {
   const { userDb } = useAuth();
+  const [participants, setParticipants] = useState([]);
 
 
   const router = useRouter();
@@ -162,7 +163,10 @@ const EventDescription = () => {
       const q = query(collection(db, "students"), where("texusId", "==", e.target.value));
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
-        console.log({id:doc.id, ...doc.data()});
+        // console.log({id:doc.id, ...doc.data()});
+        console.log(doc.data().name);
+        setParticipants([...participants, doc.data().name])
+        console.log(participants);
       });
     };
     
@@ -172,7 +176,10 @@ const EventDescription = () => {
 
   return (
     <div className="min-h-screen max-w-6xl mx-auto w-full bg-black font-montserrat">
-      <Modal  style={{fontFamily : "Montserrat"}} width={1200} title="Add other Team Members" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+      <Modal  style={{fontFamily : "Montserrat"}} width={1200} title="Add Team Members" open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={[
+        <button onClick={handleOk} className="bg-blue-500 text-white px-4 py-2 rounded-md mx-5">Submit</button>,
+        <button onClick={handleCancel} className="bg-blue-500 text-white px-4 py-2 rounded-md">Cancel</button>
+      ]} >
         <form ref={formRef} className="flex mt-4 flex-col gap-4">
           {
             Array(event?.min).fill(0).map((_,i) => {
@@ -189,7 +196,7 @@ const EventDescription = () => {
                     </svg>
                   </div>
                   </div>
-                  <p className="w-1/3">{i == 0 ? userDb.name : "KS Jayanth Srinivasan"}</p>
+                  <p className="w-1/3">{i == 0 ? participants[i] : "KS Jayanth Srinivasan"}</p>
                 </div>
               )
             })
@@ -223,7 +230,7 @@ const EventDescription = () => {
               By {event?.organised}
             </p>
           </div>
-          <h1 className={`rounded-md font-bold ${3 <= event?.limit * 0.2 ? 'text-red-500' : 'text-green-400'}` }>{`${event?.limit} slots left`}</h1>
+          <h1 className={`rounded-md font-bold ${3 <= event?.limit * 0.2 ? 'text-green-400' : 'text-red-500'}` }>{`${event?.limit} slots left`}</h1>
           <button
             onClick={addToCart}
             className="bg-gray-600/50 hover:bg-gray-600/60 transition-all duration-300 px-4 py-2 rounded-lg text-white"
