@@ -158,8 +158,10 @@ const EventDescription = () => {
       );
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
-        console.log(participants.includes(doc.data().name));
-        if (e.target.value != userDb.texusId) {
+        if (
+          e.target.value != userDb.texusId &&
+          !participants.includes(doc.data().name)
+        ) {
           formRef.current[i].style.border = ".5px solid #84cc16";
           setParticipants(
             participants.map((item, index) => {
