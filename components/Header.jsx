@@ -10,7 +10,6 @@ const Header = () => {
 
   const { user, onSignin, onSignout } = useAuth();
 
-
   const contents = ["events", "about", "schedule", "sponsors", "contact"];
 
   useEffect(() => {
@@ -87,7 +86,9 @@ const Header = () => {
                 key={key}
                 className="navButton capitalize"
                 onClick={() => {
-                  router.push(`/${content === "sponsors" ? "#sponsors" : `${content}`}`);
+                  router.push(
+                    `/${content === "sponsors" ? "#sponsors" : `${content}`}`
+                  );
                   setOpenDrawer(!openDrawer);
                 }}
               >
@@ -109,7 +110,16 @@ const Header = () => {
           {contents.map((content, key) => {
             return (
               <p
-              onClick={() => router.push(`/${content === "sponsors" ? "#sponsors" : `${content === "events" ? "#events" : `${content}`}`}`)}                key={key}
+                onClick={() =>
+                  router.push(
+                    `/${
+                      content === "sponsors"
+                        ? "#sponsors"
+                        : `${content === "events" ? "#events" : `${content}`}`
+                    }`
+                  )
+                }
+                key={key}
                 className="navButton font-montserrat"
               >
                 {content}
