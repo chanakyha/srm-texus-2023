@@ -17,6 +17,7 @@ const EventDescription = () => {
   const [event, setEvent] = useState([]);
   const [cart, setCart] = useState(null);
   // console.log(cart);
+  const [extraMember, setExtraMember] = useState(0);
 
   const getEventDetails = async () => {
     if (!eventId) return;
@@ -205,7 +206,7 @@ const EventDescription = () => {
         ]}
       >
         <form ref={formRef} className="flex mt-4 flex-col gap-4">
-          {Array(event?.min)
+          {Array(Number(event.min ? event.min + extraMember : 0))
             .fill(0)
             .map((_, i) => {
               return (
@@ -233,19 +234,47 @@ const EventDescription = () => {
                 </div>
               );
             })}
-          <div hidden>
+          <div className="flex items-center gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-6 h-6"
+              className={`${
+                event?.max > event?.min + extraMember ? "" : "hidden"
+              } w-6 h-6 cursor-pointer text-green-500`}
+              onClick={() =>
+                event?.max > event?.min + extraMember
+                  ? setExtraMember(extraMember + 1)
+                  : null
+              }
             >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 d="M12 4.5v15m7.5-7.5h-15"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className={`${
+                event?.min < extraMember ? "" : "hidden"
+              } w-6 h-6 cursor-pointer text-red-500`}
+              onClick={() =>
+                event?.min < extraMember
+                  ? setExtraMember(extraMember - 1)
+                  : null
+              }
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19.5 12h-15"
               />
             </svg>
           </div>
