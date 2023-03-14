@@ -5,15 +5,21 @@ import { doc, setDoc, getDoc } from "firebase/firestore";
 import { useAuth } from "../../backend/useAuth";
 import { db } from "../../backend/firebase";
 import Error from "next/error";
-import { useEffect, useState } from "react";
-import { Tooltip, Modal } from 'antd';
+import { useEffect, useState, useRef } from "react";
+import { Modal } from 'antd';
+import { collection, query, where, getDocs } from "firebase/firestore";
+import { async } from "@firebase/util";
 
 const EventDescription = () => {
+  const { userDb } = useAuth();
+
 
   const router = useRouter();
   const { user, api } = useAuth();
   const { eventId } = router.query;
   const [ event, setEvent ] = useState([]);
+  const [cart, setCart] = useState(null);
+  console.log(cart)
 
   const getEventDetails = async () => {
     if(!eventId) return;
@@ -22,11 +28,19 @@ const EventDescription = () => {
 
     if (docSnap.exists()) {
       setEvent({...docSnap.data(), id:doc.id});
-      console.log({...docSnap.data(), id:doc.id});
+      // console.log({...docSnap.data(), id:doc.id});
     } else {
       console.log("No such document!");
     }
-  }
+  };
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // Perform localStorage action
+      const cart = JSON.parse(localStorage.getItem('cart'))
+      setCart(cart);
+    }
+  },[])
 
   useEffect(() => {
     getEventDetails();
@@ -47,34 +61,143 @@ const EventDescription = () => {
       })
     }
     else {
-      if (event?.size > 1){
-        showModal();
+      if (event?.min == 1 && event?.max == 1){
+        localStorage.setItem("cart", JSON.stringify(
+          [{
+            eventId: event.id,
+            eventName: event.name,
+            eventVenue: event.venue,
+            eventDate: event.date,
+            eventBanner: event.banner,
+            eventOrganization: event.organised,
+            participants: [
+              userDb.texusId
+            ]
+          }]
+        ))
       }
       else {
-        console.log("can be added to cart");
+        showModal();
       }
     }
   };
+
+  const formRef = useRef(null);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
   };
   const handleOk = () => {
+    
+      const form = formRef.current;
+      let inputs = [];
+      for (let i = 0; i < event?.min; i++) {
+        inputs.push(form[i]);
+      }
+      inputs.forEach((_,i) => {
+        if(inputs[i].value == "") {
+          api["error"]({
+            message: "Error",
+            description: "Please enter a valid Texus ID",
+            placement: "bottomRight"
+          })
+        }
+        else {
+          const cart = JSON.parse(localStorage.getItem('cart'))
+          if(cart) {
+            const index = cart.findIndex((item) => item.eventId == event.id)
+            if(index == -1) {
+              localStorage.setItem("cart", JSON.stringify([
+                ...cart,
+                {
+                  eventId: event.id,
+                  eventName: event.name,
+                  eventVenue: event.venue,
+                  eventDate: event.date,
+                  eventBanner: event.banner,
+                  eventOrganization: event.organised,
+                  participants: [
+                    inputs[i].value
+                  ]
+                }
+              ]))
+            }
+            else {
+              cart[index].participants.push(inputs[i].value)
+              localStorage.setItem("cart", JSON.stringify(cart))
+            }
+          }
+          else {
+            localStorage.setItem("cart", JSON.stringify([
+              {
+                eventId: event.id,
+                eventName: event.name,
+                eventVenue: event.venue,
+                eventDate: event.date,
+                eventBanner: event.banner,
+                eventOrganization: event.organised,
+                participants: [
+                  inputs[i].value
+                ]
+              }
+            ]))
+          }
+          api["success"]({
+            message: "Success",
+            description: "Participant added to cart",
+            placement: "bottomRight"
+          })
+        }
+      })
     setIsModalOpen(false);
   };
   const handleCancel = () => {
     setIsModalOpen(false);
   };
 
+  const handleCheckTexusId =  async (e) => {
+    if ((/^(TX[0-9]{5,5})$/gm).test(e.target.value)) {
+      console.log("hii")
+      const q = query(collection(db, "students"), where("texusId", "==", e.target.value));
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        console.log({id:doc.id, ...doc.data()});
+      });
+    };
+    
+
+
+  }
+
   return (
-    <div className="min-h-screen max-w-6xl mx-auto w-full py-[100px bg-black font-montserrat">
-      <Modal title="Add other Team Members" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+    <div className="min-h-screen max-w-6xl mx-auto w-full bg-black font-montserrat">
+      <Modal  style={{fontFamily : "Montserrat"}} width={1200} title="Add other Team Members" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+        <form ref={formRef} className="flex mt-4 flex-col gap-4">
+          {
+            Array(event?.min).fill(0).map((_,i) => {
+              return (
+                <div className="w-full gap-3 text-center flex items-center justify-between">
+                  <div className="p-4 w-2/3 flex items-center justify-between bg-gray-700/30 outline-none rounded-md">
+                  <input onChange={(e) => handleCheckTexusId(e)} disabled={i==0 ? true : false} placeholder={i == 0 ? userDb.texusId : `Participant ${i+1} Texus ID`} className="bg-transparent w-full outline-none" />
+                  <div hidden={i==0 ? true : false} >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-green-500">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-red-500">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </div>
+                  </div>
+                  <p className="w-1/3">{i == 0 ? userDb.name : "KS Jayanth Srinivasan"}</p>
+                </div>
+              )
+            })
+          }
+        </form>
       </Modal>
       <Image
+      loading="lazy"
       width={100}
       height={100}
         alt=""
@@ -82,12 +205,12 @@ const EventDescription = () => {
         src={event.banner ? event.banner  :  "https://i.ibb.co/vkmsdTJ/eventcard.png"}
       />
 
-      <div className="lg:p-0 p-4 md:p-16 pt-0 lg:mt-10 text-lg">
+      <div className="lg:p-0 p-4 md:p-16 pt-6 lg:mt-10 text-lg">
         <div onClick={ () => router.back()} className="flex gap-1 items-center text-[#FF6240] cursor-pointer hover:underline underline-[#FF6240]">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
           <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
         </svg>
-        <p >
+        <p>
           Back to all events
         </p>
         </div>
@@ -100,14 +223,13 @@ const EventDescription = () => {
               By {event?.organised}
             </p>
           </div>
-          <Tooltip title={`${event?.limit} registraions left`} placement="bottom" color={`${event?.limit}` < 10 ? '#990F02' : '#222222'}>
+          <h1 className={`rounded-md font-bold ${3 <= event?.limit * 0.2 ? 'text-red-500' : 'text-green-400'}` }>{`${event?.limit} slots left`}</h1>
           <button
             onClick={addToCart}
             className="bg-gray-600/50 hover:bg-gray-600/60 transition-all duration-300 px-4 py-2 rounded-lg text-white"
           >
             Add Ticket to Cart
           </button>
-          </Tooltip>
         </div>
         <div className="flex flex-col md:flex-row space-y-1 md:space-y-0 justify-between my-10">
           <div className="flex items-center space-x-2">
@@ -181,7 +303,7 @@ const EventDescription = () => {
              d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z" 
              />
           </svg>
-          <p className="text-white font-medium text-sm md:text-lg">Team Size: {event?.size}</p>
+          <p className="text-white font-medium text-sm md:text-lg">Team Size: {event?.max}</p>
           </div>
         </div>
         <div className="my-10">
