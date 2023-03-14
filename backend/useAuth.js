@@ -11,11 +11,14 @@ import {
 } from "firebase/auth";
 import { auth, db } from "./firebase";
 import { useState } from "react";
+import { notification } from "antd";
 
 const AuthContext = createContext({});
 
 const AuthProvider = ({ children }) => {
+  const [api, contextHolder] = notification.useNotification();
   const [user, setUser] = useState([]);
+  const [userDb, setUserDb] = useState([]);
   const googleProvider = new GoogleAuthProvider();
   const router = useRouter();
 
@@ -23,11 +26,20 @@ const AuthProvider = ({ children }) => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
+        ;(async () => {
+          const docSnap = await getDoc(doc(db, "students", user.uid));
+          // console.log(docSnap?.data())
+          if (docSnap?.data()?.texusId) {
+            console.log("User already exists");
+            setUserDb({...docSnap.data(), id:docSnap.id });
+          }
+        })()
+        
       } else {
         setUser(false);
       }
     });
-  }, []);
+  }, [user]);
 
   const onSignin = () => {
     signInWithPopup(auth, googleProvider)
@@ -45,6 +57,7 @@ const AuthProvider = ({ children }) => {
           const docSnap = await getDoc(doc(db, "students", user.user.uid));
           if (docSnap?.data()?.texusId) {
             console.log("User already exists");
+            setUserDb({...docSnap.data(), id:docSnap.id });
           } else {
             router.replace("/register");
           }
@@ -65,8 +78,10 @@ const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, onSignin, onSignout }}>
+    <AuthContext.Provider value={{ user, onSignin, onSignout, api, userDb }}>
+      
       {children}
+      {contextHolder}
     </AuthContext.Provider>
   );
 };

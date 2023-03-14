@@ -13,7 +13,9 @@ function MyApp({ Component, pageProps }) {
         }}
       >
         <Header />
-        <Component {...pageProps} />
+        <div className="mt-28 font-montserrat">
+          <Component {...pageProps} />
+        </div>
         <Footer />
       </ConfigProvider>
     </AuthProvider>
